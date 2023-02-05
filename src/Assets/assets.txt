@@ -1,0 +1,3 @@
+
+
+here we add media file such as pictures and all other static file
