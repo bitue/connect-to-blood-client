@@ -3,7 +3,7 @@ import Hero from '../Components/Home/Hero';
 
 const Home = () => {
     return (
-        <div>
+        <div className="bg-[#f1f1f1]">
             <Hero />
         </div>
     );

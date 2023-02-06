@@ -1,5 +1,0 @@
-
-
-
-here we add api gate way through frontend part 
-every api must come through from this folder  to server and vice versa
