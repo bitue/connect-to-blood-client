@@ -1,5 +1,6 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Navbar from "./Layout/Navbar/Navbar";
 import Home from "./Pages/Home";
 
 const App = () => {
