@@ -4,13 +4,13 @@ import img from "../../Assets/images/about.jpg"
 const About = () => {
     return (
         <>
-            <div className="hero">
-                <div className="flex justify-between items-center">
-                    <div className="flex flex-col justify-center items-center w-[50%]">
-                        <h2 className="text-4xl text-center">About <span className="text-primary">US</span></h2>
-                        <p className="mt-[20px] px-[30px]">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto corporis in omnis, ea officia ullam aliquam ratione consequatur, rerum dolores cupiditate facere, excepturi nulla cum maxime rem alias doloremque quas sed maiores obcaecati necessitatibus. In eligendi, repellendus harum aut iste optio esse laudantium tempora quibusdam labore facilis dolor tenetur autem.</p>
+            <div className="hero min-h-screen">
+                <div className="hero-content flex-col lg:flex-row">
+                    <img src={img} alt="" className="rounded-lg w-[60%]" />
+                    <div className="w-[40%]">
+                        <h1 className="text-5xl font-bold">About US</h1>
+                        <p className="py-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor debitis aliquam incidunt nam? Impedit delectus provident dolorem dolor. Cupiditate inventore doloremque minus maiores ullam, harum voluptate voluptas saepe, quae a nisi reiciendis odit aspernatur! Facere commodi praesentium doloribus, eveniet esse soluta eius velit odio quos pariatur veniam minus. Minima, vitae!</p>
                     </div>
-                    <img src={img} alt="" />
                 </div>
             </div>
         </>
