@@ -1,12 +1,17 @@
 import React from "react";
-import "boxicons";
-
+import donationImg from "../../Assets/images/blood-donation.png";
+import bloodBank from "../../Assets/images/bloodBank.png";
+import healthcare from "../../Assets/images/healthcare.png";
 const InfoCards = () => {
   return (
     <div className=" w-[85%] mx-auto place-items-center py-4 grid lg:grid-cols-3 md:grid-cols-1 grid-cols-1 gap-4">
       <div className="card w-96 bg-base-100 shadow-xl">
         <figure className="pt-10">
-          <box-icon size="54px" color="#ED4245" name="donate-blood"></box-icon>
+          <img
+            className="w-14"
+            src={donationImg}
+            alt="blood donation img"
+          ></img>
         </figure>
         <div className="card-body items-center text-center">
           <h2 className="card-title text-[24px] pb-2">Blood Donation</h2>
@@ -16,7 +21,7 @@ const InfoCards = () => {
 
       <div className="card w-96 bg-base-100 shadow-xl">
         <figure className="pt-10">
-          <box-icon size="54px" color="#ED4245" name="body"></box-icon>
+          <img className="w-14" src={healthcare} alt="blood donation img"></img>
         </figure>
         <div className="card-body items-center text-center">
           <h2 className="card-title text-[24px] pb-2">Health Check!</h2>
@@ -29,7 +34,7 @@ const InfoCards = () => {
 
       <div className="card w-96 bg-base-100 shadow-xl">
         <figure className="pt-10">
-          <box-icon size="54px" color="#ED4245" name="clinic"></box-icon>
+          <img className="w-14" src={bloodBank} alt="blood donation img"></img>
         </figure>
         <div className="card-body items-center text-center">
           <h2 className="card-title text-[24px] pb-2">Blood Bank</h2>
