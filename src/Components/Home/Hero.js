@@ -3,7 +3,7 @@ import img from "../../Assets/images/hero-image.png"
 
 const Hero = () => {
     return (
-        <div className="hero min-h-screen">
+        <div className="hero pt-[30px]">
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <img src={img} className="rounded-lg md:w-[50%]" alt="hero" />
                 <div className="lg:w-[50%]">

@@ -6,7 +6,7 @@ import hospital from "../../Assets/images/hospital.png";
 const Stats = () => {
   return (
     <div>
-      <h1 className="text-5xl font-bold text-center my-4">
+      <h1 className="text-5xl font-bold text-center my-6">
         Our<span className="text-[#ED4245]"> Statistics</span>
       </h1>
       <div className="grid gap-3 lg:md:grid-cols-3 grid-cols-1 place-content-center bg-[#f1f1f1]">
