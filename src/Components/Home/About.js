@@ -4,7 +4,7 @@ import img from "../../Assets/images/about.jpg"
 const About = () => {
     return (
         <>
-            <div className="hero min-h-screen">
+            <div className="hero">
                 <div className="hero-content flex-col lg:flex-row">
                     <img src={img} alt="" className="rounded-lg w-[60%]" />
                     <div className="w-[40%]">
