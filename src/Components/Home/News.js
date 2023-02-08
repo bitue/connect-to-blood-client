@@ -1,15 +1,16 @@
 import React from "react";
 import bloodPressureImg from "../../Assets/images/bloodPressureNews01.jpg";
 import bloodTestNewsImg from "../../Assets/images/bloodTestNews02.jpg";
-import rarestBloodGroupImg from "../../Assets/images/rearestBloodGroupImg.png";
+// import rarestBloodGroupImg from "../../Assets/images/rearestBloodGroupImg.png";
+import rareBloodType from "../../Assets/images/rareBloodType.jpg";
 const News = () => {
   return (
     <>
-      <h1 className="text-center my-[20px] text-3xl font-bold">
-        Latest <span className="text-primary">News</span>
+      <h1 className="text-center my-[20px] text-5xl font-bold">
+        Latest <span className="text-primary">Blog</span>
       </h1>
       <div className=" w-[85%] mx-auto place-items-center py-4 grid lg:grid-cols-3 md:grid-cols-1 grid-cols-1 gap-4 mt-[20px]">
-        <div className="card rounded-b-md rounded-t-none card-compact w-80 bg-base-100 shadow-none">
+        <div className="card rounded-b-md rounded-t-none card-compact w-96 bg-base-100 shadow-none">
           <figure>
             <img src={bloodPressureImg} alt="blood pressure images" />
           </figure>
@@ -23,13 +24,17 @@ const News = () => {
               mini-stroke...
             </p>
             <div className="card-actions justify-end">
-              <a href="https://www.medicalnewstoday.com/articles/can-low-blood-pressure-cause-a-stroke">
+              <a
+                href="https://www.medicalnewstoday.com/articles/can-low-blood-pressure-cause-a-stroke"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <p>Read more</p>
               </a>
             </div>
           </div>
         </div>
-        <div className="card rounded-b-md rounded-t-none card-compact w-80 bg-base-100 shadow-none">
+        <div className="card rounded-b-md rounded-t-none card-compact w-96 bg-base-100 shadow-none">
           <figure>
             <img src={bloodTestNewsImg} alt="blood pressure images" />
           </figure>
@@ -53,9 +58,9 @@ const News = () => {
             </div>
           </div>
         </div>
-        <div className="card card-compact rounded-b-md rounded-t-none w-80 bg-base-100 shadow-none">
+        <div className="card card-compact rounded-b-md rounded-t-none w-96 bg-base-100 shadow-none">
           <figure>
-            <img src={rarestBloodGroupImg} alt="blood pressure images" />
+            <img src={rareBloodType} alt="blood pressure images" />
           </figure>
           <div className="card-body">
             <h3 className="card-title">
@@ -67,7 +72,11 @@ const News = () => {
               prevalence...
             </p>
             <div className="card-actions justify-end">
-              <a href="https://www.medicalnewstoday.com/articles/most-common-blood-type-by-race">
+              <a
+                href="https://www.medicalnewstoday.com/articles/most-common-blood-type-by-race"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <p>Read more</p>
               </a>
             </div>
