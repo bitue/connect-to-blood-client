@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import Home from './Pages/Home';
 import Login from './Pages/Login';
+import Register from './Pages/Register';
 import RegisterDonar from './Pages/RegisterDonar';
 
 const App = () => {
@@ -16,7 +17,11 @@ const App = () => {
             element: <Login />
         },
         {
-            path: '/registerDonar',
+            path: '/register',
+            element: <Register />
+        },
+        {
+            path: "/registerDonar",
             element: <RegisterDonar />
         }
     ]);
