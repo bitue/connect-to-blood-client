@@ -5,6 +5,7 @@ import InfoCards from "../Components/Home/InfoCards";
 import News from "../Components/Home/News";
 import Navbar from "../Components/Shared/Navbar";
 import Stats from "../Components/Home/Stats";
+import Reviews from "../Components/Home/Reviews";
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
       <InfoCards />
       <Stats />
       <News />
+      <Reviews />
     </div>
   );
 };
