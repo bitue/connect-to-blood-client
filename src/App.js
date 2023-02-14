@@ -1,5 +1,8 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import CreateAdmin from "./Components/Dashboard/CreateAdmin";
+import Dashboard from "./Components/Dashboard/Dashboard";
+import UserProfile from "./Components/Dashboard/UserProfile";
 import Footer from "./Components/Shared/Footer";
 
 import Home from "./Pages/Home";
@@ -25,6 +28,20 @@ const App = () => {
       path: "/registerDonar",
       element: <RegisterDonar />,
     },
+    {
+      path: "/dashboard",
+      element: <Dashboard />,
+      children: [
+        {
+          path: "",
+          element: <UserProfile />
+        },
+        {
+          path: "createAdmin",
+          element: <CreateAdmin />
+        }
+      ]
+    }
   ]);
 
   return (
