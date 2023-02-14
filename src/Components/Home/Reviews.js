@@ -2,15 +2,36 @@ import React from 'react';
 import Review from './Review';
 
 const Reviews = () => {
+    const reviewsData = [
+        {
+            name: "Rick",
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyXlfi53WdBgRqfP2gwb6yrMCfV7WOCCqH48JYEzZn&s",
+            description: "One of the best websites every made, Because of this website my child is alive",
+            rating: 4
+        },
+        {
+            name: "Ryan",
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9OgLFvvyIcNsUyyY9aycyZoaV9LTL_5IyGraC-llL&s",
+            description: "One of the best websites every made, Because of this website my child is alive",
+            rating: 5
+        },
+        {
+            name: "Alan",
+            image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cmFuZG9tJTIwcGVvcGxlfGVufDB8fDB8fA%3D%3D&w=1000&q=80",
+            description: "One of the best websites every made, Because of this website my child is alive",
+            rating: 5
+        }
+    ]
     return (
         <>
             <h1 className="text-center my-[20px] text-5xl font-bold">
                 Our <span className="text-primary">Reviews</span>
             </h1>
             <div className=" w-[85%] mx-auto place-items-center py-4 grid lg:grid-cols-3 md:grid-cols-1 grid-cols-1 gap-4 mt-[20px]">
-                <Review name="Someone" image="https://images.pexels.com/photos/2912166/pexels-photo-2912166.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis reiciendis sequi sit, repudiandae iusto cupiditate modi culpa officiis aut magni delectus aperiam, perspiciatis repellendus vero! Provident quae reiciendis vel et!" rating={5}></Review>
-                <Review name="Someone" image="https://images.pexels.com/photos/2912166/pexels-photo-2912166.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis reiciendis sequi sit, repudiandae iusto cupiditate modi culpa officiis aut magni delectus aperiam, perspiciatis repellendus vero! Provident quae reiciendis vel et!" rating={5}></Review>
-                <Review name="Someone" image="https://images.pexels.com/photos/2912166/pexels-photo-2912166.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis reiciendis sequi sit, repudiandae iusto cupiditate modi culpa officiis aut magni delectus aperiam, perspiciatis repellendus vero! Provident quae reiciendis vel et!" rating={4}></Review>
+                {
+                    reviewsData.map(review => <Review name={review.name} image={review.image} description={review.description} rating={review.rating} />)
+                }
+
             </div>
         </>
     );
