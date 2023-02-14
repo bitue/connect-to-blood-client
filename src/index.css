@@ -1,13 +1,13 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    background: #f1f1f1 !important;
-    font-family: "Open Sans", sans-serif;
-    color: #222222;
+  background: #f1f1f1 !important;
+  font-family: "Open Sans", sans-serif;
+  color: #222222;
 }
 
 @tailwind base;
