@@ -1,14 +1,14 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    height: 100vh;
-    background: #f1f1f1 !important;
-    font-family: "Open Sans", sans-serif;
-    color: #222222;
+  /* height: 100vh; */
+  background: #f1f1f1 !important;
+  font-family: "Open Sans", sans-serif;
+  color: #222222;
 }
 
 @tailwind base;

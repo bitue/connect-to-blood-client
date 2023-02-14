@@ -1,0 +1,58 @@
+.teamPersonCardSection {
+  margin: 60px 10%;
+}
+.teamTitle {
+  font-size: 28px;
+  font-weight: 600;
+  text-align: center;
+}
+.teamTitle span {
+  color: #ed4245;
+  font-weight: bolder;
+}
+.teamPersonCardSection {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: center;
+  align-items: center;
+  gap: 70px;
+}
+.teamPersonCard {
+  max-width: 300px;
+  padding: 20px;
+  font-size: 14px;
+  border-radius: 15px;
+  box-shadow: 0px 30px 68px #cacaca, -30px -30px 68px #f6f6f6;
+}
+.personImg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.personImg img {
+  border-radius: 50%;
+}
+.personTextual {
+  margin-top: 15px;
+}
+.personTextual h1 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.personTextual h3 {
+  font-size: 17px;
+}
+.shortDescription {
+  margin-top: 10px;
+}
+@media only screen and (max-width: 900px) {
+  .teamPersonCardSection {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media only screen and (max-width: 600px) {
+  .teamPersonCardSection {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
