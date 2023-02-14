@@ -14,10 +14,8 @@ const Home = () => {
       <Hero />
       <About />
       <InfoCards />
-  
-     
       <News />
-       <Reviews />
+      <Reviews />
       <Stats />
     </div>
   );
