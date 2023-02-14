@@ -1,6 +1,7 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Footer from "./Components/Shared/Footer";
+import About from "./Pages/About";
 
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
@@ -24,6 +25,10 @@ const App = () => {
     {
       path: "/registerDonar",
       element: <RegisterDonar />,
+    },
+    {
+      path: "/about",
+      element: <About />,
     },
   ]);
 

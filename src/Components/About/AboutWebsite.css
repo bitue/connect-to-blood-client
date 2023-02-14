@@ -1,0 +1,45 @@
+.about_website_parent {
+  margin: 60px 10%;
+}
+.about_website_header {
+  text-align: center;
+  font-size: 26px;
+  margin-bottom: 25px;
+}
+.about_website_header span {
+  font-size: 28px;
+  font-weight: bold;
+  color: #ed4245;
+}
+.about_website_content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  grid-gap: 40px;
+  place-items: center;
+  justify-content: center;
+  text-align: justify;
+}
+.about_website_text {
+  flex: 50%;
+}
+.about_website_content span {
+  font-size: 20px;
+  color: #ed4245;
+  font-weight: bold;
+}
+.about_website_img {
+  flex: 50%;
+}
+.about_website_img img {
+  margin-right: 20px;
+  max-width: 100%;
+}
+@media only screen and (max-width: 600px) {
+  .about_website_content {
+    flex-direction: column-reverse;
+
+    margin: 60px 0;
+  }
+}
