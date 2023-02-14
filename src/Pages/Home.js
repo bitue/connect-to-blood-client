@@ -6,6 +6,7 @@ import News from "../Components/Home/News";
 import Navbar from "../Components/Shared/Navbar";
 import Stats from "../Components/Home/Stats";
 import Faq from "../Components/Home/Faq";
+import Reviews from "../Components/Home/Reviews";
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
       <About />
       <InfoCards />
       <News />
+      <Reviews />
       <Stats />
       <Faq />
     </div>
