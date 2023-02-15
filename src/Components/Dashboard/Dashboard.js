@@ -17,13 +17,13 @@ const Dashboard = () => {
                         <div className="collapse collapse-arrow">
                             <input type="checkbox" className="peer" />
                             <div className="collapse-title">
-                                Moderation
+                                Control Panel
                             </div>
                             <div className="collapse-content">
                                 <ul className="list-disc">
                                     <li className="hover:bg-[#f1f1f1] transition"><Link to="/dashboard/createAdmin">Create A Admin</Link></li>
                                     <li className="hover:bg-[#f1f1f1] transition"><Link to="/dashboard/approveDonor">Approve donor registration</Link></li>
-                                    <li className="hover:bg-[#f1f1f1] transition"><Link to="/dashboard/">Ban Users</Link></li>
+                                    <li className="hover:bg-[#f1f1f1] transition"><Link to="/dashboard/banUser">Ban Users</Link></li>
                                 </ul>
                             </div>
                         </div>
