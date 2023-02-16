@@ -1,6 +1,12 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import ApproveDonor from "./Components/Dashboard/ApproveDonor";
+import BanUsers from "./Components/Dashboard/BanUsers";
+import CreateAdmin from "./Components/Dashboard/CreateAdmin";
+import Dashboard from "./Components/Dashboard/Dashboard";
+import UserProfile from "./Components/Dashboard/UserProfile";
 import Footer from "./Components/Shared/Footer";
+import About from "./Pages/About";
 
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
@@ -25,6 +31,32 @@ const App = () => {
       path: "/registerDonar",
       element: <RegisterDonar />,
     },
+    {
+      path: "/dashboard",
+      element: <Dashboard />,
+      children: [
+        {
+          path: "",
+          element: <UserProfile />
+        },
+        {
+          path: "createAdmin",
+          element: <CreateAdmin />
+        },
+        {
+          path: "approveDonor",
+          element: <ApproveDonor />
+        },
+        {
+          path: "banUser",
+          element: <BanUsers />
+        }
+      ]
+    },
+    {
+      path: "/about",
+      element: <About />,
+    }
   ]);
 
   return (
