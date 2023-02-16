@@ -39,7 +39,7 @@ const CreateAdmin = () => {
                             <td>Brice Swyre</td>
                             <td>briceswyre@gmail.com</td>
                             <td>Donor</td>
-                            <td><button class="btn hover:text-[#fff] gap-2 bg-primary border-primary hover:bg-[#222]">
+                            <td><button class="btn text-[#fff] gap-2 bg-primary border-primary hover:bg-[#222]">
                                 Make Admin
                             </button></td>
                         </tr>

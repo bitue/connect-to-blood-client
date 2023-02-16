@@ -19,7 +19,6 @@ const Register = () => {
                             <div className="form-control w-full max-w-xs">
                                 <label className="label">
                                     <span className="label-text text-secondary">Enter your email</span>
-
                                 </label>
                                 <input type="email" placeholder="Write your email" class="input border-secondary mb-[20px] w-[400px] max-w-xs" {...register("email", {
                                     required: true
