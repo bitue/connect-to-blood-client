@@ -4,6 +4,7 @@ import teacher from "../../Assets/images/727-removebg-preview.png";
 
 const Steps = () => {
   return (
+    ///steps component
     <div className="hero min-h-screen w-full">
       <div className="hero-content flex-col lg:flex-row w-full">
         <img src={teacher} />
