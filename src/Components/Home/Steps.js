@@ -10,7 +10,7 @@ const Steps = () => {
         <div className="w-[50%]">
           <div className="lg:md:mt-[200px]">
             <h1 className="text-5xl font-bold ">
-              Important <span className="text-[#ED4245]"> Steps</span>
+              Important <span className="text-[#ED4245]"> Step</span>
             </h1>
             <ul className="steps steps-vertical w-full">
               <li className="step step-primary ">
