@@ -37,7 +37,7 @@ const News = () => {
             </figure>
             <div className="card-body">
               <h3 className="card-title">
-                  {news.title}
+                {news.title}
               </h3>
               <p>
                 {news.short_description}

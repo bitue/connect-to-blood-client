@@ -13,11 +13,10 @@ const Login = () => {
                 <div className="flex items-center flex-col justify-center py-[25px] px-[20px]  lg:md:w-[500px] bg-[#fff] shadow-xl rounded-[20px] h-[500px]">
                     <h2 className="text-3xl text-center mb-[20px] font-medium">Log<span className="text-primary">in</span></h2>
                     <div>
-                        <form action="" onSubmit={handleSubmit(onSubmit)} className="flex flex-col justify-center items-center">
+                        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col justify-center items-center">
                             <div className="form-control w-full max-w-xs">
                                 <label className="label">
                                     <span className="label-text text-secondary">Enter your email</span>
-
                                 </label>
                                 <input type="email" placeholder="Write your email" class="input border-secondary mb-[20px] w-[400px] max-w-xs" {...register("email", {
                                     required: true

@@ -1,5 +1,7 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import ApproveDonor from "./Components/Dashboard/ApproveDonor";
+import BanUsers from "./Components/Dashboard/BanUsers";
 import CreateAdmin from "./Components/Dashboard/CreateAdmin";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import UserProfile from "./Components/Dashboard/UserProfile";
@@ -40,6 +42,14 @@ const App = () => {
         {
           path: "createAdmin",
           element: <CreateAdmin />
+        },
+        {
+          path: "approveDonor",
+          element: <ApproveDonor />
+        },
+        {
+          path: "banUser",
+          element: <BanUsers />
         }
       ]
     },
