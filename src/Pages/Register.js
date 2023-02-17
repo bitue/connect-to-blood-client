@@ -16,7 +16,7 @@ const Register = () => {
             <div className="min-h-screen flex justify-center items-center">
                 <div className="flex items-center flex-col justify-center py-[25px] px-[20px]  lg:md:w-[500px] bg-[#fff] shadow-xl rounded-[20px]">
                     <h2 className="text-3xl text-center mb-[20px] font-medium">
-                        Regis<span className="text-primary">ter</span>
+                        Register<span className="text-primary"> User</span>
                     </h2>
                     <div>
                         <form
@@ -104,7 +104,7 @@ const Register = () => {
                                     required: true
                                 })}
                             >
-                                <option className="text-[#555]" disabled>
+                                <option className="text-[#555]" selected disabled>
                                     What is your blood type ?
                                 </option>
                                 {bloodTypes.map((blood, idx) => {
