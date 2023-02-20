@@ -17,9 +17,9 @@ const News = () => {
       </h1>
       <div className=" w-[85%] mx-auto place-items-center py-4 grid lg:grid-cols-3 md:grid-cols-1 grid-cols-1 gap-4 mt-[20px]">
         {
-          news?.map(news => <div className="card card-compact rounded-b-md rounded-t-none w-96 bg-base-100 shadow-none h-[200px]">
+          news?.map(news => <div className="card card-compact rounded-b-md rounded-t-none w-96 bg-base-100 shadow-none h-[auto]">
             <figure>
-              <img src={news?.img} alt="blood pressure images" />
+              <img src={news?.img} alt="blood pressure images" className="h-[100%] w-[100%]" />
             </figure>
             <div className="card-body">
               <h3 className="card-title">

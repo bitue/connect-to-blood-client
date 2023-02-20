@@ -34,7 +34,7 @@ const Dashboard = () => {
                             </div>
                             <div className="collapse-content">
                                 <ul className="list-disc">
-                                    <li className="hover:bg-[#f1f1f1] transition"><Link to="/dashboard/:becomeAAdmin">Your Profile</Link></li>
+                                    <li className="hover:bg-[#f1f1f1] transition"><Link to="/dashboard/">Your Profile</Link></li>
                                     <li className="hover:bg-[#f1f1f1] transition"><Link to="/dashboard/:becomeAAdmin">Create an blog</Link></li>
                                     <li className="hover:bg-[#f1f1f1] transition"><Link to="/dashboard/:becomeAAdmin">All Articles</Link></li>
                                 </ul>
