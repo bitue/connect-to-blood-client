@@ -4,10 +4,14 @@ import { AuthContext } from '../../context/AuthProvider';
 import { useToken } from '../../hooks/useToken';
 
 const Navbar = () => {
-    const { user } = useContext(AuthContext);
+    const { user, setUser } = useContext(AuthContext);
     const { clearToken } = useToken();
     // const [isLoggedIn, setIsLoggedIn] = useState(user ? true : false);
     console.log(user);
+    const logOutHandler = () => {
+        clearToken();
+        setUser(null);
+    };
     const menuItems = (
         <React.Fragment>
             <li>
@@ -27,7 +31,7 @@ const Navbar = () => {
             </li>
             <li>
                 {user ? (
-                    <Link to="/login" onClick={clearToken}>
+                    <Link to="/login" onClick={logOutHandler}>
                         LogOut
                     </Link>
                 ) : (

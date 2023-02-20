@@ -12,11 +12,14 @@ export const useToken = () => {
     const clearToken = () => {
         localStorage.removeItem('token');
         setToken('');
-        setUser(null);
+        //setUser(null);
     };
 
     const getData = async () => {
         try {
+            if (!token) {
+                return;
+            }
             const res = axios.get('https://pear-gifted-lamb.cyclic.app/public/getUserByToken', {
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -25,8 +28,6 @@ export const useToken = () => {
             const user = (await res).data;
             console.log(user);
             setUser(user);
-
-            return user;
         } catch (err) {
             // unauthorized user !!! need to add frontend page that unAuthorized msg !
             console.log(err.message);
