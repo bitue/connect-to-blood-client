@@ -1,6 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const CreateAdmin = () => {
+    const [users, setUsers] = useState([])
+
+    useEffect(() => {
+        fetch("https://pear-gifted-lamb.cyclic.app/admin/getAllUsers", {
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+            .then(res => res.json())
+            .then(data => console.log(data));
+    }, [users])
+
+
     return (
         <div>
             <h2 className="text-center text-3xl my-[20px]">Create an Admin</h2>
@@ -25,24 +39,9 @@ const CreateAdmin = () => {
                                 Already Admin
                             </button></td>
                         </tr>
-                        <tr>
-                            <th>2</th>
-                            <td>Hart Hagerty</td>
-                            <td>harthagerty@gmail.com</td>
-                            <td>User</td>
-                            <td><button class="btn hover:text-[#fff] gap-2 bg-primary border-primary hover:bg-[#222]">
-                                Make Admin
-                            </button></td>
-                        </tr>
-                        <tr>
-                            <th>3</th>
-                            <td>Brice Swyre</td>
-                            <td>briceswyre@gmail.com</td>
-                            <td>Donor</td>
-                            <td><button class="btn text-[#fff] gap-2 bg-primary border-primary hover:bg-[#222]">
-                                Make Admin
-                            </button></td>
-                        </tr>
+                        {
+                            users.map((index, user) => <></>)
+                        }
                     </tbody>
                 </table>
             </div>

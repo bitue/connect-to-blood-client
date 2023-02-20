@@ -5,6 +5,7 @@ import BanUsers from "./Components/Dashboard/BanUsers";
 import CreateAdmin from "./Components/Dashboard/CreateAdmin";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import UserProfile from "./Components/Dashboard/UserProfile";
+import YourArticles from "./Components/Dashboard/YourArticles";
 import Footer from "./Components/Shared/Footer";
 import About from "./Pages/About";
 
@@ -50,6 +51,10 @@ const App = () => {
         {
           path: "banUser",
           element: <BanUsers />
+        },
+        {
+          path: "yourArticles",
+          element: <YourArticles />
         }
       ]
     },
