@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ApproveDonor from "./Components/Dashboard/ApproveDonor";
 import BanUsers from "./Components/Dashboard/BanUsers";
 import CreateAdmin from "./Components/Dashboard/CreateAdmin";
+import CreateBlog from "./Components/Dashboard/CreateBlog";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import UserProfile from "./Components/Dashboard/UserProfile";
 import Footer from "./Components/Shared/Footer";
@@ -37,26 +38,30 @@ const App = () => {
       children: [
         {
           path: "",
-          element: <UserProfile />
+          element: <UserProfile />,
         },
         {
           path: "createAdmin",
-          element: <CreateAdmin />
+          element: <CreateAdmin />,
         },
         {
           path: "approveDonor",
-          element: <ApproveDonor />
+          element: <ApproveDonor />,
         },
         {
           path: "banUser",
-          element: <BanUsers />
-        }
-      ]
+          element: <BanUsers />,
+        },
+        {
+          path: "createBlog",
+          element: <CreateBlog />,
+        },
+      ],
     },
     {
       path: "/about",
       element: <About />,
-    }
+    },
   ]);
 
   return (
