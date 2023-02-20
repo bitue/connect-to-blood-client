@@ -9,6 +9,8 @@ const Register = () => {
     const onSubmit = (data) => {
         data.role = 'user';
         console.log(data);
+
+        
     };
     return (
         <>
