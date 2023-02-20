@@ -7,11 +7,10 @@ import Navbar from '../Components/Shared/Navbar';
 import Stats from '../Components/Home/Stats';
 import Faq from '../Components/Home/Faq';
 import Reviews from '../Components/Home/Reviews';
-import { AuthContext } from '../context/AuthProvider';
 
 const Home = () => {
-    const value = useContext(AuthContext);
-    console.log(value, ' from home js');
+    // const value = useContext(AuthContext);
+    // console.log(value, ' from home js');
     return (
         <div className="bg-[#f1f1f1]">
             <Navbar />
