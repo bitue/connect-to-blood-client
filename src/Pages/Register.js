@@ -10,6 +10,7 @@ const Register = () => {
         data.role = 'user';
         console.log(data);
     };
+
     return (
         <>
             <Navbar></Navbar>
