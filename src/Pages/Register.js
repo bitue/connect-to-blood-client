@@ -26,13 +26,9 @@ const Register = () => {
                         >
                             <div className="form-control w-full max-w-xs">
                                 <label className="label">
-<<<<<<< HEAD
-                                    <span className="label-text text-secondary">Enter your email</span>
-=======
                                     <span className="label-text text-secondary">
                                         Enter your email
                                     </span>
->>>>>>> ef9271d42adb44abac39aaecf6ef422754960e4e
                                 </label>
                                 <input
                                     type="email"
