@@ -55,18 +55,18 @@ const App = () => {
                     element: <BanUsers />
                 },
                 {
-                  path: "createBlog",
-                  element: <CreateBlog />,
+                    path: "createBlog",
+                    element: <CreateBlog />,
                 },
             ]
         },
         {
-          path: "banUser",
-          element: <BanUsers />
+            path: "banUser",
+            element: <BanUsers />
         },
         {
-          path: "yourArticles",
-          element: <YourArticles />
+            path: "yourArticles",
+            element: <YourArticles />
         },
         {
             path: '/about',
