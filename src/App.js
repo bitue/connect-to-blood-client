@@ -1,5 +1,3 @@
-import React from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from './Pages/Home';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
@@ -12,7 +10,7 @@ import UserProfile from "./Components/Dashboard/UserProfile";
 import YourArticles from "./Components/Dashboard/YourArticles";
 import Footer from "./Components/Shared/Footer";
 import About from "./Pages/About";
-
+import CreateBlog from "./Components/Dashboard/CreateBlog";
 
 const App = () => {
     // const { user } = useToken();
@@ -54,7 +52,11 @@ const App = () => {
                 {
                     path: 'banUser',
                     element: <BanUsers />
-                }
+                },
+                {
+                  path: "createBlog",
+                  element: <CreateBlog />,
+                },
             ]
         },
         {

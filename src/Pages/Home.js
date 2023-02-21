@@ -7,6 +7,7 @@ import Navbar from '../Components/Shared/Navbar';
 import Stats from '../Components/Home/Stats';
 import Faq from '../Components/Home/Faq';
 import Reviews from '../Components/Home/Reviews';
+import Steps from "../Components/Home/Steps";
 
 const Home = () => {
     // const value = useContext(AuthContext);
@@ -20,6 +21,7 @@ const Home = () => {
             <News />
             <Reviews />
             <Stats />
+            <Steps />
             <Faq />
         </div>
     );

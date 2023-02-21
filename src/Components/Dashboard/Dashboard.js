@@ -1,6 +1,6 @@
-import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
-import Navbar from '../Shared/Navbar';
+import React from "react";
+import { Link, Outlet } from "react-router-dom";
+import Navbar from "../Shared/Navbar";
 
 const Dashboard = () => {
     return (
@@ -35,7 +35,7 @@ const Dashboard = () => {
                             <div className="collapse-content">
                                 <ul className="list-disc">
                                     <li className="hover:bg-[#f1f1f1] transition"><Link to="/dashboard/">Your Profile</Link></li>
-                                    <li className="hover:bg-[#f1f1f1] transition"><Link to="/dashboard/:becomeAAdmin">Create an blog</Link></li>
+                                    <li className="hover:bg-[#f1f1f1] transition"><Link to="/dashboard/createBlog">Create an blog</Link></li>
                                     <li className="hover:bg-[#f1f1f1] transition"><Link to="/dashboard/yourArticles">Your articles</Link></li>
                                 </ul>
                             </div>
