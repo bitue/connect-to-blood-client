@@ -12,6 +12,7 @@ const Register = () => {
 
         
     };
+
     return (
         <>
             <Navbar></Navbar>

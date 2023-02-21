@@ -8,6 +8,8 @@ const RegisterDonar = () => {
     const onSubmit = (data) => {
         const BMI = data.weight / ((data.height / 100) * (data.height / 100));
         // ------------------ Need to add userId to put here at user property ----------------
+        //data.user = user._id
+        // check the user password === data.password
         console.log(BMI);
         data.BMI = BMI;
         console.log(data);
