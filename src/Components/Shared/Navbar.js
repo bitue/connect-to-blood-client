@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { AuthContext } from '../../context/Authprovider';
+import { AuthContext } from '../../context/AuthProvider';
 import { useToken } from '../../hooks/useToken';
 
 const Navbar = () => {
