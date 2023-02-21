@@ -11,8 +11,7 @@ const Login = () => {
     const { user, setUser, saveToken } = useContext(AuthContext);
     const onSubmit = async (form_data) => {
         const header = {
-            'Content-Type': 'application/json',
-            Authorization: 'JWT fefege...'
+            'Content-Type': 'application/json'
         };
         try {
             const userCred = await axios.post(
