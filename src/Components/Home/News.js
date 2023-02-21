@@ -1,13 +1,14 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 const News = () => {
   const [news, setNews] = useState([])
 
   useEffect(() => {
-    fetch("https://pear-gifted-lamb.cyclic.app/public/getBlogs")
-      .then(res => res.json())
-      .then(data => setNews(data.data))
-  }, [news])
+    axios.get("https://pear-gifted-lamb.cyclic.app/public/getBlogs").then(res => {
+      setNews(res.data.data)
+    })
+  }, [])
 
   console.log(news)
   return (

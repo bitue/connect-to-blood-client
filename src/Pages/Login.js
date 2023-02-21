@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import Navbar from '../Components/Shared/Navbar';
-import { AuthContext } from '../context/AuthProvider';
+import { AuthContext } from '../context/Authprovider';
 
 const Login = () => {
     const { register, handleSubmit } = useForm();
