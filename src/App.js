@@ -2,15 +2,16 @@ import Home from './Pages/Home';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
 import RegisterDonar from './Pages/RegisterDonar';
-import ApproveDonor from "./Components/Dashboard/ApproveDonor";
-import BanUsers from "./Components/Dashboard/BanUsers";
-import CreateAdmin from "./Components/Dashboard/CreateAdmin";
-import Dashboard from "./Components/Dashboard/Dashboard";
-import UserProfile from "./Components/Dashboard/UserProfile";
-import YourArticles from "./Components/Dashboard/YourArticles";
-import Footer from "./Components/Shared/Footer";
-import About from "./Pages/About";
-import CreateBlog from "./Components/Dashboard/CreateBlog";
+import ApproveDonor from './Components/Dashboard/ApproveDonor';
+import BanUsers from './Components/Dashboard/BanUsers';
+import CreateAdmin from './Components/Dashboard/CreateAdmin';
+import Dashboard from './Components/Dashboard/Dashboard';
+import UserProfile from './Components/Dashboard/UserProfile';
+import YourArticles from './Components/Dashboard/YourArticles';
+import Footer from './Components/Shared/Footer';
+import About from './Pages/About';
+import CreateBlog from './Components/Dashboard/CreateBlog';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 const App = () => {
     // const { user } = useToken();
@@ -54,18 +55,18 @@ const App = () => {
                     element: <BanUsers />
                 },
                 {
-                  path: "createBlog",
-                  element: <CreateBlog />,
-                },
+                    path: 'createBlog',
+                    element: <CreateBlog />
+                }
             ]
         },
         {
-          path: "banUser",
-          element: <BanUsers />
+            path: 'banUser',
+            element: <BanUsers />
         },
         {
-          path: "yourArticles",
-          element: <YourArticles />
+            path: 'yourArticles',
+            element: <YourArticles />
         },
         {
             path: '/about',
