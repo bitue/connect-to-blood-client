@@ -1,18 +1,37 @@
-import axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
-import Navbar from "../Components/Shared/Navbar";
-import { AuthContext } from "../context/AuthProvider";
+
+import axios from 'axios';
+import React, { useContext, useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
+import Navbar from '../Components/Shared/Navbar';
+import { AuthContext } from '../context/AuthProvider';
+
 
 const Login = () => {
   const { register, handleSubmit } = useForm();
 
-  const { user, setUser, saveToken } = useContext(AuthContext);
-  const onSubmit = async (form_data) => {
-    const header = {
-      "Content-Type": "application/json",
-      Authorization: "JWT fefege...",
+
+    const { user, setUser, saveToken } = useContext(AuthContext);
+    const onSubmit = async (form_data) => {
+        const header = {
+            'Content-Type': 'application/json'
+        };
+        try {
+            const userCred = await axios.post(
+                'https://pear-gifted-lamb.cyclic.app/signin',
+                form_data,
+                header
+            );
+            const { data, headers } = userCred;
+            // const{'authorizationtoken'} = userCred.headers ;
+            console.log(data);
+            console.log(headers);
+            saveToken(headers.authorization);
+            setUser(data.user);
+        } catch (err) {
+            console.log(err.message);
+        }
+
     };
     try {
       const userCred = await axios.post(

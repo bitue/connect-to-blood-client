@@ -1,7 +1,8 @@
-import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
-import { AuthContext } from "../../context/AuthProvider";
-import { useToken } from "../../hooks/useToken";
+import React, { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthProvider';
+import { useToken } from '../../hooks/useToken';
+
 
 const Navbar = () => {
   const { user, setUser } = useContext(AuthContext);
