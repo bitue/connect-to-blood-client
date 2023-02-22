@@ -1,21 +1,20 @@
 import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Navbar from "../Components/Shared/Navbar";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faArrowUp,
+  faComment,
+  faArrowRight,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Blogs = () => {
-  const [likes, setLikes] = useState(0);
-  const [comments, setComments] = useState([]);
+  const [upvotes, setUpvotes] = useState(10);
+  const [comments, setComments] = useState(Array(3).fill(null));
   const { id } = useParams();
 
   const handleLike = () => {
-    setLikes(likes + 1);
-  };
-
-  const handleComment = (event) => {
-    event.preventDefault();
-    const comment = event.target.elements.comment.value;
-    setComments([...comments, comment]);
-    event.target.reset();
+    setUpvotes(upvotes + 1);
   };
 
   return (
@@ -24,72 +23,47 @@ const Blogs = () => {
       <div className="bg-white rounded-lg shadow-lg overflow-hidden max-w-md mx-auto my-8">
         <img
           className="object-cover object-center w-full h-64"
-          src="https://source.unsplash.com/random/800x600"
+          src="https://images.unsplash.com/photo-1615461065624-21b562ee5566?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Ymxvb2QlMjBkb25vcnxlbnwwfHwwfHw%3D&w=1000&q=80"
           alt="blog cover"
         />
         <div className="p-6">
-          <h2 className="font-bold text-3xl mb-4">Blog Title</h2>
-          <div className="flex justify-between mb-4">
-            <div className="flex items-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 mr-2"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M13 10V3L4 14h7v7l9-11h-7z"
-                />
-              </svg>
-              <span className="text-lg">{comments.length} Comments</span>
-            </div>
-          </div>
-          <form onSubmit={handleComment}>
-            <input
-              type="text"
-              name="comment"
-              placeholder="Write a comment"
-              className="w-full border border-gray-300 rounded-lg py-2 px-3 mb-4 text-lg"
-            />
-            <Link to={`/blogs/${id}`} id="blog-details-link">
-              <button
-                type="submit"
-                className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 text-lg"
-              >
-                Details
-              </button>
-            </Link>
-          </form>
-          {comments.map((comment, index) => (
-            <div key={index} className="mt-6">
-              <p className="font-semibold text-lg">{comment}</p>
-            </div>
-          ))}
-          <div className="flex justify-between mt-6">
+          <h2 className="font-bold text-2xl mb-4">
+            Importance of Blood Donation
+          </h2>
+          <div className="flex justify-between items-center mb-4">
             <div className="flex items-center">
               <button onClick={handleLike} className="mr-2 focus:outline-none">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
+                <FontAwesomeIcon
+                  icon={faArrowUp}
+                  className="text-black h-4 w-4"
+                />
               </button>
-              <span className="text-lg">{likes} Likes</span>
+              <span className="text-lg">{upvotes}</span>
+              <span className="text-black text-sm ml-2">Upvotes</span>
+            </div>
+
+            <div className="flex items-center">
+              <FontAwesomeIcon
+                icon={faComment}
+                className="text-black h-4 w-4 mr-2"
+              />
+              <span className="text-lg">{comments.length}</span>
+              <span className="text-black text-sm ml-2">Comments</span>
             </div>
           </div>
+
+          <Link to={`/blogs/${id}`} id="blog-details-link">
+            <button
+              type="submit"
+              className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary text-lg flex items-center"
+            >
+              <span className="mr-2">More</span>
+              <FontAwesomeIcon
+                icon={faArrowRight}
+                className="text-white h-4 w-4"
+              />
+            </button>
+          </Link>
         </div>
       </div>
     </div>

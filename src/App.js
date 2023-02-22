@@ -19,6 +19,7 @@ import Blogs from "./Pages/Blogs";
 
 import { useContext } from "react";
 import { AuthContext } from "../src/context/AuthProvider.jsx";
+import BlogsDetails from "./Pages/BlogsDetails";
 
 const App = () => {
   // const { user } = useToken();
@@ -83,6 +84,10 @@ const App = () => {
     {
       path: "/about",
       element: <About />,
+    },
+    {
+      path: "/blogs/:id",
+      element: <BlogsDetails />,
     },
   ]);
 
