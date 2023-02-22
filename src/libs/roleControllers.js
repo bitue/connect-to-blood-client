@@ -1,9 +1,9 @@
-const roleControllers = {
-    admin: ['admin'],
-    donor: ['donor', 'admin'],
-    user: ['user', 'donor', 'admin']
+const roleSchema = {
+    user: ['user'],
+    donor: ['donor', 'user'],
+    admin: ['user', 'donor', 'admin']
 };
 
 module.exports = {
-    roleControllers
+    roleSchema
 };
