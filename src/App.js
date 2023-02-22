@@ -16,12 +16,15 @@ import ApproveDonor from "./Components/Dashboard/ApproveDonor";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Blogs from "./Pages/Blogs";
-import BlogsDetails from "./Pages/BlogsDetails";
+
+import { useContext } from "react";
+import { AuthContext } from "../src/context/AuthProvider.jsx";
 
 const App = () => {
   // const { user } = useToken();
   // console.log(user, 'from app.js');
   // console.log(user);
+  const { loading } = useContext(AuthContext);
   const router = createBrowserRouter([
     {
       path: "/",
@@ -81,15 +84,16 @@ const App = () => {
       path: "/about",
       element: <About />,
     },
-    {
-      path: "/blogs/:id",
-      element: <BlogsDetails />,
-    },
   ]);
 
   return (
     <div>
-      <RouterProvider router={router} />
+      {loading ? (
+        <p>I am loading .........</p>
+      ) : (
+        <RouterProvider router={router} />
+      )}
+
       <Footer />
     </div>
   );
