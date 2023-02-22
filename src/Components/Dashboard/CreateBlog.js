@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
+import { AuthContext } from "../../context/AuthProvider";
 
 const CreateBlog = () => {
   const {
@@ -10,122 +9,84 @@ const CreateBlog = () => {
     handleSubmit,
     reset,
   } = useForm();
-
-  //   const [likes, setLikes] = useState(0);
-  //   const [dislikes, setDislikes] = useState(0);
-
+  const { token } = useContext(AuthContext);
+  console.log(token, "create blog");
   const onSubmit = (data) => {
     console.log(data);
+
+    const isReady = window.confirm("Are you sure you want to post this blog?");
+    if (isReady) {
+      fetch("https://pear-gifted-lamb.cyclic.app/createBlog", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(data),
+      })
+        .then((res) => res.json())
+        .then((result) => {
+          if (result.acknowledged) {
+            alert("Blog added successfully");
+          }
+        });
+      reset();
+    }
   };
 
-  //   const handleLike = () => {
-  //     setLikes((prevLikes) => prevLikes + 1);
-  //   };
-
-  //   const handleDislike = () => {
-  //     setDislikes((prevDislikes) => prevDislikes + 1);
-  //   };
-
-  const handleClear = () => {
-    reset();
-    // setLikes(0);
-    // setDislikes(0);
+  const getErrorMessage = (name) => {
+    return (
+      errors[name] && <p className="text-red-600">{errors[name].message}</p>
+    );
   };
 
   return (
-    <div className="h-[800px] flex justify-center items-center">
-      <div className="w-96 p-7 bg-white  shadow-xl rounded-[20px] ">
-        <h2 className="text-3xl text-center mb-[20px] font-medium">
+    <div className="w-full h-full flex flex-col items-center justify-center py-10 bg-gray-100">
+      <div className="w-full max-w-3xl bg-white rounded-lg shadow-xl">
+        <h2 className="text-3xl text-center mb-6 font-medium py-4">
           Creating a <span className="text-primary">blog</span>
         </h2>
-        <form onSubmit={handleSubmit(onSubmit)} className="border-secondary ">
-          <div className="form-control w-full max-w-xs  ">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="border-secondary px-8 pb-8"
+        >
+          <div className="form-control mb-6">
             <input
               type="text"
-              {...register("user", {
-                required: "User name is required",
-              })}
-              className="input border-secondary mb-[20px] w-[400px] max-w-xs"
-              placeholder="Creator"
-            />
-            {errors.title && (
-              <p className="text-red-600">{errors.user?.message}</p>
-            )}
-          </div>
-
-          <div className="form-control w-full max-w-xs ">
-            <input
-              type="text"
-              {...register("title", {
-                required: "Title is required",
-              })}
-              className="input border-secondary mb-[20px] w-[400px] max-w-xs"
+              {...register("title", { required: "Title is required" })}
+              className="input border-secondary w-full p-2 rounded-lg bg-gray-50 shadow-md"
               placeholder="Title"
             />
-            {errors.title && (
-              <p className="text-red-600">{errors.title?.message}</p>
-            )}
+            {getErrorMessage("title")}
           </div>
 
-          <div className="form-control w-full max-w-xs">
+          <div className="form-control mb-6">
             <textarea
-              {...register("content", {
-                required: "Content is required",
-              })}
-              className="textarea textarea-bordered border-secondary w-full max-w-xs"
+              {...register("content", { required: "Content is required" })}
+              className="textarea textarea-bordered border-secondary w-full p-2 rounded-lg bg-gray-50 shadow-md"
               placeholder="Content Minimum 100 Words"
-            ></textarea>
-            {errors.content && (
-              <p className="text-red-600">{errors.content?.message}</p>
-            )}
+            />
+            {getErrorMessage("content")}
           </div>
 
-          <div className="form-control w-full max-w-xs  text-[#222] mt-4">
+          <div className="form-control mb-6">
             <input
-              type="file"
-              {...register("file")}
-              className="file-input file-input-bordered file-input-sm border-secondary mb-[20px] w-[400px] max-w-xs"
+              type="text"
+              {...register("url", { required: "Image url is required" })}
+              placeholder="Give Image URL here"
+              className="file-input file-input-bordered file-input-sm  border-secondary w-full p-2 rounded-lg bg-gray-50 shadow-md"
             />
+            {getErrorMessage("url")}
           </div>
 
           <div className="flex justify-between">
             <input
-              className="btn btn-accent  mt-4 bg-blue-500 w-full  text-white"
+              className="btn btn-primary btn-sm w-[200px] text-white place-content-center py-2 rounded-lg"
               value="Submit"
               type="submit"
-              style={{ backgroundColor: "#3B82F6", borderColor: "#3B82F6" }}
             />
           </div>
-
-          <div className="flex justify-between ">
-            <button
-              className="btn  btn-primary w-full mt-2"
-              type="button"
-              onClick={handleClear}
-            >
-              Clear
-            </button>
-          </div>
         </form>
-
-        {/* <div className="flex justify-between mt-4">
-          <button
-            className="btn btn-sm btn-outline btn-white bg-blue-500 "
-            type="button"
-            onClick={handleLike}
-          >
-            <FontAwesomeIcon icon={faThumbsUp} />
-            <span className="ml-2 ">{likes}</span>
-          </button>
-          <button
-            className="btn btn-sm btn-outline btn-primary"
-            type="button"
-            onClick={handleDislike}
-          >
-            <FontAwesomeIcon icon={faThumbsDown} />
-            <span className="ml-2">{dislikes}</span>
-          </button>
-        </div> */}
       </div>
     </div>
   );
