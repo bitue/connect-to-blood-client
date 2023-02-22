@@ -10,27 +10,7 @@ const Login = () => {
     const [loading, setLoading] = useState(false);
 
     const { user, setUser, saveToken } = useContext(AuthContext);
-    // const onSubmit =  (form_data) => {
-    //     const header = {
-    //         'Content-Type': 'application/json'
-    //     };
-    //     try {
-    //         const userCred =  axios.post(
-    //             'https://pear-gifted-lamb.cyclic.app/signin',
-    //             form_data,
-    //             header
-    //         );
-    //         const { data, headers } = userCred;
-    //         // const{'authorizationtoken'} = userCred.headers ;
-    //         console.log(data);
-    //         console.log(headers);
-    //         saveToken(headers.authorization);
-    //         setUser(data.user);
-    //     } catch (err) {
-    //         console.log(err.message);
-    //     }
-
-    // };
+   
     const onSubmit = async (form_data) => {
         try {
             setLoading(true);

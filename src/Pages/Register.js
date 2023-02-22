@@ -1,4 +1,5 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import Navbar from '../Components/Shared/Navbar';
@@ -6,15 +7,17 @@ import Navbar from '../Components/Shared/Navbar';
 const Register = () => {
     const { register, handleSubmit } = useForm();
     const bloodTypes = ['A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-'];
-    const onSubmit = (data) => {
-        data.role = 'user';
-        console.log(data);
+    const [token, setToken] = useState('')
+    const onSubmit = (userData) => {
+        axios.post("https://pear-gifted-lamb.cyclic.app/signup", userData)
+            .then(res => localStorage.setItem("token", res.headers.authorization))
+            .catch(error => console.log(error))
     };
 
     return (
         <>
             <Navbar></Navbar>
-            <div className="min-h-screen flex justify-center items-center">
+            <div className="flex justify-center items-center my-[30px]">
                 <div className="flex items-center flex-col justify-center py-[25px] px-[20px]  lg:md:w-[500px] bg-[#fff] shadow-xl rounded-[20px]">
                     <h2 className="text-3xl text-center mb-[20px] font-medium">
                         Register<span className="text-primary"> User</span>
