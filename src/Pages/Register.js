@@ -7,7 +7,7 @@ import Navbar from '../Components/Shared/Navbar';
 const Register = () => {
     const { register, handleSubmit } = useForm();
     const bloodTypes = ['A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-'];
-    const [token, setToken] = useState('')
+    
     const onSubmit = (userData) => {
         axios.post("https://pear-gifted-lamb.cyclic.app/signup", userData)
             .then(res => localStorage.setItem("token", res.headers.authorization))
