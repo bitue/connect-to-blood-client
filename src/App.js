@@ -16,6 +16,7 @@ import ApproveDonor from "./Components/Dashboard/ApproveDonor";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Blogs from "./Pages/Blogs";
+import BlogsDetails from "./Pages/BlogsDetails";
 
 const App = () => {
   // const { user } = useToken();
@@ -79,6 +80,10 @@ const App = () => {
     {
       path: "/about",
       element: <About />,
+    },
+    {
+      path: "/blogs/:id",
+      element: <BlogsDetails />,
     },
   ]);
 

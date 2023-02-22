@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import Navbar from "../Components/Shared/Navbar";
 
 const Blogs = () => {
   const [likes, setLikes] = useState(0);
   const [comments, setComments] = useState([]);
+  const { id } = useParams();
 
   const handleLike = () => {
     setLikes(likes + 1);
@@ -53,12 +55,14 @@ const Blogs = () => {
               placeholder="Write a comment"
               className="w-full border border-gray-300 rounded-lg py-2 px-3 mb-4 text-lg"
             />
-            <button
-              type="submit"
-              className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 text-lg"
-            >
-              details
-            </button>
+            <Link to={`/blogs/${id}`} id="blog-details-link">
+              <button
+                type="submit"
+                className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 text-lg"
+              >
+                Details
+              </button>
+            </Link>
           </form>
           {comments.map((comment, index) => (
             <div key={index} className="mt-6">
