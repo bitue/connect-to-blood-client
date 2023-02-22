@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 const BlogsDetails = () => {
   const { id } = useParams();
 
-  // Here you can use the `id` to fetch the blog details from an API or a local data source
+  // Here you use the `id` to fetch the blog details from an API or a local data source
   const [blog, setBlog] = useState({
     id: "1",
     title: "Blog Title",
