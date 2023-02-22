@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
+// 
 
 const CreateBlog = () => {
   const {

@@ -12,6 +12,7 @@ import Footer from "./Components/Shared/Footer";
 import About from "./Pages/About";
 import CreateBlog from "./Components/Dashboard/CreateBlog";
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import BloodSearch from './Pages/BloodSearch';
 
 const App = () => {
     // const { user } = useToken();
@@ -71,6 +72,10 @@ const App = () => {
         {
             path: '/about',
             element: <About />
+        },
+        {
+            path: "/bloodSearch",
+            element: <BloodSearch />
         }
     ]);
 
