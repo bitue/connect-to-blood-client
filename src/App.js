@@ -2,7 +2,6 @@ import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import RegisterDonar from "./Pages/RegisterDonar";
-
 import BanUsers from "./Components/Dashboard/BanUsers";
 import CreateAdmin from "./Components/Dashboard/CreateAdmin";
 import Dashboard from "./Components/Dashboard/Dashboard";
@@ -11,20 +10,15 @@ import YourArticles from "./Components/Dashboard/YourArticles";
 import Footer from "./Components/Shared/Footer";
 import About from "./Pages/About";
 import CreateBlog from "./Components/Dashboard/CreateBlog";
-
 import ApproveDonor from "./Components/Dashboard/ApproveDonor";
-
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Blogs from "./Pages/Blogs";
-
 import { useContext } from "react";
 import { AuthContext } from "../src/context/AuthProvider.jsx";
 import BlogsDetails from "./Pages/BlogsDetails";
+import BloodSearch from "./Pages/BloodSearch";
 
 const App = () => {
-  // const { user } = useToken();
-  // console.log(user, 'from app.js');
-  // console.log(user);
   const { loading } = useContext(AuthContext);
   const router = createBrowserRouter([
     {
@@ -89,6 +83,10 @@ const App = () => {
       path: "/blogs/:id",
       element: <BlogsDetails />,
     },
+    {
+      path: "/bloodSearch",
+      element: <BloodSearch />
+    }
   ]);
 
   return (
