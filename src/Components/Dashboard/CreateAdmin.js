@@ -1,18 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import React, { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../../context/AuthProvider';
 
 const CreateAdmin = () => {
     const [users, setUsers] = useState([])
 
+    const { token, user } = useContext(AuthContext);
+
     useEffect(() => {
-        fetch("https://pear-gifted-lamb.cyclic.app/admin/getAllUsers", {
-            method: "GET",
+        axios.get("https://pear-gifted-lamb.cyclic.app/admin/getAllUsers", {
             headers: {
                 'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`
             }
-        })
-            .then(res => res.json())
-            .then(data => console.log(data));
-    }, [users])
+        }).then(res => setUsers(res.data.data))
+            .catch(error => console.log(error))
+    }, [])
+
+    const makeAdmin = (userId) => {
+        axios.put(`https://pear-gifted-lamb.cyclic.app/admin/makeAdmin?id=${userId}`, {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`
+            }
+        }).then(res => console.log(res))
+            .catch(error => console.log(error))
+    }
 
 
     return (
@@ -30,17 +43,17 @@ const CreateAdmin = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr className="border-[#222]">
-                            <th>1</th>
-                            <td>Cy Ganderton</td>
-                            <td>Cyganderton@gmail.com</td>
-                            <td>Admin</td>
-                            <td><button class="btn no-animation gap-2 bg-primary hover:bg-primary opacity-[0.2] hover:border-primary">
-                                Already Admin
-                            </button></td>
-                        </tr>
+
                         {
-                            users.map((index, user) => <></>)
+                            users?.map((user, index) => <tr className="border-[#222]">
+                                <th>{index + 1}</th>
+                                <td>{user.email.split("@")[0]}</td>
+                                <td>{user.email}</td>
+                                <td>{user.role}</td>
+                                <td><button class="btn no-animation gap-2 bg-primary hover:bg-primary hover:border-primary text-white" onClick={() => makeAdmin(user._id)}>
+                                    Make Admin
+                                </button></td>
+                            </tr>)
                         }
                     </tbody>
                 </table>

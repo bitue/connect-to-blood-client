@@ -8,7 +8,6 @@ const Navbar = () => {
   const { user, setUser } = useContext(AuthContext);
   const { clearToken } = useToken();
   // const [isLoggedIn, setIsLoggedIn] = useState(user ? true : false);
-  console.log(user);
   const logOutHandler = () => {
     clearToken();
     setUser(null);
