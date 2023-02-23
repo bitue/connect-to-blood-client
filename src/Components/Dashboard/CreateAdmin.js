@@ -1,10 +1,10 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 import { AuthContext } from '../../context/AuthProvider';
 
 const CreateAdmin = () => {
     const [users, setUsers] = useState([])
-
     const { token, user } = useContext(AuthContext);
 
     useEffect(() => {
@@ -15,16 +15,52 @@ const CreateAdmin = () => {
             }
         }).then(res => setUsers(res.data.data))
             .catch(error => console.log(error))
-    }, [])
+    }, [users])
 
     const makeAdmin = (userId) => {
-        axios.put(`https://pear-gifted-lamb.cyclic.app/admin/makeAdmin?id=${userId}`, {
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success',
+                cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: false
+        })
+
+        swalWithBootstrapButtons.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, cancel!',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                swalWithBootstrapButtons.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire(
+                    'Cancelled',
+                    'Your imaginary file is safe :)',
+                    'error'
+                )
+            }
+        })
+        fetch(`https://pear-gifted-lamb.cyclic.app/admin/makeAdmin?id=${userId}`, {
+            method: "put",
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`
+                authorization: `Bearer ${token}`
             }
-        }).then(res => console.log(res))
-            .catch(error => console.log(error))
+        })
+            .then(res => res.json())
+            .then(data => console.log(data))
     }
 
 
