@@ -14,7 +14,6 @@ const CreateBlog = () => {
 
     console.log(token, 'create blog');
     const onSubmit = (data) => {
-        console.log(data, ' blog data from ');
         data.user = user._id;
 
         const isReady = window.confirm('Are you sure you want to post this blog?');
@@ -43,54 +42,29 @@ const CreateBlog = () => {
     };
 
     return (
-        <div className="w-full h-full flex flex-col items-center justify-center py-20 px-10 bg-gray-100">
-            <div className="w-full max-w-3xl bg-white rounded-lg shadow-xl">
-                <h2 className="text-3xl text-center mb-6 font-medium py-4">
-                    Creating a <span className="text-primary">blog</span>
-                </h2>
-                <form onSubmit={handleSubmit(onSubmit)} className="border-secondary px-8 pb-8">
-                    <div className="form-control mb-6">
-                        <input
-                            type="text"
-                            {...register('title', { required: 'Title is required' })}
-                            className="input border-secondary w-full p-2 rounded-lg bg-gray-50 shadow-md"
-                            placeholder="Title"
-                        />
-                        {getErrorMessage('title')}
-                    </div>
+        <div className="h-[550px] w-[450px] phone-2 text-center rounded-xl bg-[#fff] mx-auto mt-[30px] shadow-xl pt-[20px]">
+            <h2 className="text-2xl mt-[20px] font-bold">Create <span className="text-[#ED4245]">Blog</span></h2>
+            <form action="" className="flex justify-center items-center" onSubmit={handleSubmit(onSubmit)}>
+                <div className="form-control w-full max-w-xs">
+                    <label className="label">
+                        <span className="label-text text-[#222]">Blog title</span>
+                    </label>
+                    <input type="text" placeholder="Blog title" className="input input-bordered w-full max-w-xs border-[#222]" {...register("title", { required: true })} /> 
+                    <label className="label mt-[20px]">
+                        <span className="label-text text-[#222]">Blog description</span>
+                    </label>
+                    <textarea placeholder="Bio" className="textarea textarea-bordered textarea-md w-full max-w-xs border-[#222] " {...register("content", { required: true })}  ></textarea>
 
-                    <div className="form-control mb-6">
-                        <textarea
-                            {...register('content', { required: 'Content is required' })}
-                            className="textarea textarea-bordered border-secondary w-full p-2 rounded-lg bg-gray-50 shadow-md"
-                            placeholder="Content Minimum 100 Words"
-                        />
-                        {getErrorMessage('content')}
-                    </div>
+                    <label className="label mt-[20px]">
+                        <span className="label-text text-[#222]">Image Link</span>
+                    </label>
+                    <input type="url" placeholder="Blog title" className="input input-bordered w-full max-w-xs border-[#222]" {...register("img", { required: true })}   />
+                    <button className="btn mt-[20px] text-[#fff]  bg-primary border-primary hover:bg-[#222] disabled:bg-[#f3f3f3]" >
+                        Create Blog
+                    </button>
 
-                    <div className="form-control mb-6">
-                        <input
-                            type="text"
-                            {...register('url', { required: 'Image url is required' })}
-                            placeholder="Give Image URL here"
-                            className="file-input file-input-bordered file-input-sm  border-secondary w-full p-2 rounded-lg bg-gray-50 shadow-md"
-                        />
-                        {getErrorMessage('url')}
-                    </div>
-
-                    <div className="flex justify-between">
-                        <input
-                            className="btn btn-primary btn-sm w-[200px] text-white place-content-center py-2 rounded-lg"
-                            value="Submit"
-                            type="submit"
-                        />
-                    </div>
-                </form>
-                <div>
-                    <p className="text-primary">{blogStatus ? blogStatus : ''}</p>
-                    {/* modal use kore aita koray jai vai ,, aita try koiren  */}
                 </div>
-            </div>
+            </form>
         </div>
     );
 };

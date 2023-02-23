@@ -1,8 +1,10 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
+import { Link } from 'react-router-dom';
 
 const NewsCard = ({ news }) => {
+     console.log(news)
      const blogLike = () => {
 
      }
@@ -32,9 +34,10 @@ const NewsCard = ({ news }) => {
                     <div className="w-[95%] flex justify-center items-center mx-auto text-center">
                          <p>{news.comments[0]?.comment}</p>
                     </div>
-                    <button class="btn text-[#fff] gap-2 bg-primary border-primary hover:bg-[#222]">
-                         Read More
-                    </button>
+
+                    <Link to={`/blogs/${news._id}`} className="w-[100%]">
+                         <button class="btn w-[100%] text-[#fff] gap-2 bg-primary border-primary hover:bg-[#222]">Read more</button></Link>
+
                </div>
           </div>
      );

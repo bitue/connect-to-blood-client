@@ -17,7 +17,7 @@ const News = () => {
       </h1>
       <div className=" w-[85%] mx-auto place-items-center py-4 grid lg:grid-cols-3 md:grid-cols-1 grid-cols-1 gap-4 mt-[20px]">
         {
-          news?.map(news => <NewsCard news={news} />)
+          news?.map((news, index) => index < 3 && (<NewsCard news={news} />))
         }
       </div>
     </>

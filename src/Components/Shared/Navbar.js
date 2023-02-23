@@ -14,7 +14,7 @@ const Navbar = () => {
     setUser(null);
   };
   const menuItems = (
-    <React.Fragment>
+    <>
       <li>
         <Link to="/">Home</Link>
       </li>
@@ -27,19 +27,23 @@ const Navbar = () => {
       <li>
         <Link to="/reviews">Reviews</Link>
       </li>
-      <li>
-        <Link to="/dashboard">Dashboard</Link>
-      </li>
-      <li>
-        {user ? (
+
+      {user ? <>
+        <li>
+          <Link to="/dashboard">Dashboard</Link>
+        </li>
+        <li>
           <Link to="/login" onClick={logOutHandler}>
-            LogOut
+            Logout
           </Link>
-        ) : (
-          <Link to="/login"> LogIn</Link>
+        </li>
+      </>
+        : (
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
         )}
-      </li>
-    </React.Fragment>
+    </>
   );
 
   return (
