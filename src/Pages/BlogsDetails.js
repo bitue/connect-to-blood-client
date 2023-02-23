@@ -26,6 +26,7 @@ const BlogsDetails = () => {
       }));
     }
   };
+  console.log(blog)
 
   return (
     <>
@@ -38,11 +39,12 @@ const BlogsDetails = () => {
             alt={blog?.author}
             className="w-8 h-8 rounded-full mr-2"
           />
-          <p className="text-sm text-gray-700">{blog?.author}</p>
-          <p className="text-sm text-gray-700 mx-4">—</p>
-          <p className="text-sm text-gray-700">
-            {blog?.date?.toLocaleDateString()}
-          </p>
+          <div className="flex justify-between items-center">
+            <p className="text-sm text-secondary mr-[30px]">{blog?.user.email.split("@")[0]}</p>
+            <p className="text-sm text-secondary">
+              {blog?.createdAt.split("T")[0]}
+            </p>
+          </div>
         </div>
         <img
           src={blog?.img}
