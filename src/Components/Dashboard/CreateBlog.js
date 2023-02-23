@@ -1,5 +1,7 @@
+import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import Swal from 'sweetalert2';
 import { AuthContext } from '../../context/AuthProvider';
 
 const CreateBlog = () => {
@@ -10,36 +12,33 @@ const CreateBlog = () => {
         reset
     } = useForm();
     const { token, user } = useContext(AuthContext);
-    const [blogStatus, setBlogStatus] = useState('');
-
-    console.log(token, 'create blog');
     const onSubmit = (data) => {
         data.user = user._id;
-
-        const isReady = window.confirm('Are you sure you want to post this blog?');
-        if (isReady) {
-            fetch('https://pear-gifted-lamb.cyclic.app/createBlog', {
-                method: 'POST',
+        axios.post("https://pear-gifted-lamb.cyclic.app/createBlog", data,
+            {
                 headers: {
-                    'content-type': 'application/json',
+                    'Content-type': "application/json",
                     Authorization: `Bearer ${token}`
-                },
-                body: JSON.stringify(data)
+                }
             })
-                .then((res) => res.json())
-                .then((result) => {
-                    // console.log(result);
-                    if (result.message) {
-                        setBlogStatus(result.message);
-                    }
-                });
-            reset();
-        }
+            .then(res => {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Blog Successfuly created',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }).catch(error => {
+                Swal.fire({
+                    icon: 'error',
+                    title: error,
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            })
+        reset()
     };
 
-    const getErrorMessage = (name) => {
-        return errors[name] && <p className="text-red-600">{errors[name].message}</p>;
-    };
 
     return (
         <div className="h-[550px] w-[450px] phone-2 text-center rounded-xl bg-[#fff] mx-auto mt-[30px] shadow-xl pt-[20px]">
@@ -49,7 +48,7 @@ const CreateBlog = () => {
                     <label className="label">
                         <span className="label-text text-[#222]">Blog title</span>
                     </label>
-                    <input type="text" placeholder="Blog title" className="input input-bordered w-full max-w-xs border-[#222]" {...register("title", { required: true })} /> 
+                    <input type="text" placeholder="Blog title" className="input input-bordered w-full max-w-xs border-[#222]" {...register("title", { required: true })} />
                     <label className="label mt-[20px]">
                         <span className="label-text text-[#222]">Blog description</span>
                     </label>
@@ -58,7 +57,7 @@ const CreateBlog = () => {
                     <label className="label mt-[20px]">
                         <span className="label-text text-[#222]">Image Link</span>
                     </label>
-                    <input type="url" placeholder="Blog title" className="input input-bordered w-full max-w-xs border-[#222]" {...register("img", { required: true })}   />
+                    <input type="url" placeholder="Blog title" className="input input-bordered w-full max-w-xs border-[#222]" {...register("img", { required: true })} />
                     <button className="btn mt-[20px] text-[#fff]  bg-primary border-primary hover:bg-[#222] disabled:bg-[#f3f3f3]" >
                         Create Blog
                     </button>

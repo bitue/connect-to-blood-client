@@ -1,12 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
 import Navbar from "../Components/Shared/Navbar";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowUp,
-  faComment,
-  faArrowRight,
-} from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import NewsCard from "../Components/Home/NewsCard";
 
