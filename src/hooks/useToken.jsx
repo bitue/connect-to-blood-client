@@ -29,7 +29,6 @@ export const useToken = () => {
                 }
             });
             const user = (await res).data;
-            console.log(user);
             setUser(user);
             setLoading(false); // got user or not but loading now false ;
         } catch (err) {

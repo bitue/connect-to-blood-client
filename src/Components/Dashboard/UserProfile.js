@@ -31,7 +31,7 @@ const UserProfile = () => {
                             <div className="w-[50%] flex justify-center items-center flex-col">
                                 <h2 className="text-2xl">My Profile</h2>
                                 <form className="flex justify-center items-center flex-col">
-                                    <input type="text" value="HueByte" class="input w-full max-w-xs border-b-[2px] border-black border-t-0 border-l-0 border-r-0 rounded-none mt-[20px]" readOnly/>
+                                    <input type="text" value="HueByte" class="input w-full max-w-xs border-b-[2px] border-black border-t-0 border-l-0 border-r-0 rounded-none mt-[20px]" readOnly />
                                     <input type="email" value="HueByte@gmail.com" class="input w-full max-w-xs border-b-[2px] border-black border-t-0 border-l-0 border-r-0 rounded-none mt-[20px]" readOnly />
                                     <input type="password" value="HueByte" class="input w-full max-w-xs border-b-[2px] border-black border-t-0 border-l-0 border-r-0 rounded-none mt-[20px]" />
                                 </form>

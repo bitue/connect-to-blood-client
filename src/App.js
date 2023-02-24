@@ -92,12 +92,17 @@ const App = () => {
   return (
     <div>
       {loading ? (
-        <p>I am loading .........</p>
+        <div className="min-h-screen flex justify-center items-center">
+          <div className="loader"></div>
+        </div>
       ) : (
-        <RouterProvider router={router} />
+        <>
+          <RouterProvider router={router} />
+          <Footer />
+        </>
+
       )}
 
-      <Footer />
     </div>
   );
 };
