@@ -9,7 +9,7 @@ const NewsCard = ({ news }) => {
 
      }
      return (
-          <div className="card card-compact rounded-b-md rounded-t-none w-96 bg-base-100 shadow-none h-[auto]">
+          <div className="card card-compact rounded-b-md rounded-t-none w-96 bg-base-100 shadow-none h-[500px]">
                <figure>
                     <img src={news?.img} alt="blood pressure images" className="h-[250px] w-[100%]" />
                </figure>
