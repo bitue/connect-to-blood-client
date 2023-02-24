@@ -11,7 +11,7 @@ const NewsCard = ({ news }) => {
      return (
           <div className="card card-compact rounded-b-md rounded-t-none w-96 bg-base-100 shadow-none h-[auto]">
                <figure>
-                    <img src={news?.img} alt="blood pressure images" className="h-[100%] w-[100%]" />
+                    <img src={news?.img} alt="blood pressure images" className="h-[250px] w-[100%]" />
                </figure>
                <div className="card-body">
                     <h3 className="card-title">

@@ -49,15 +49,16 @@ const CreateBlog = () => {
                         <span className="label-text text-[#222]">Blog title</span>
                     </label>
                     <input type="text" placeholder="Blog title" className="input input-bordered w-full max-w-xs border-[#222]" {...register("title", { required: true })} />
+
                     <label className="label mt-[20px]">
                         <span className="label-text text-[#222]">Blog description</span>
                     </label>
-                    <textarea placeholder="Bio" className="textarea textarea-bordered textarea-md w-full max-w-xs border-[#222] " {...register("content", { required: true })}  ></textarea>
+                    <textarea placeholder="Blog description" className="textarea textarea-bordered textarea-md w-full max-w-xs border-[#222] " {...register("content", { required: true })}  ></textarea>
 
                     <label className="label mt-[20px]">
                         <span className="label-text text-[#222]">Image Link</span>
                     </label>
-                    <input type="url" placeholder="Blog title" className="input input-bordered w-full max-w-xs border-[#222]" {...register("img", { required: true })} />
+                    <input type="url" placeholder="BLog Image" className="input input-bordered w-full max-w-xs border-[#222]" {...register("img", { required: true })} />
                     <button className="btn mt-[20px] text-[#fff]  bg-primary border-primary hover:bg-[#222] disabled:bg-[#f3f3f3]" >
                         Create Blog
                     </button>
