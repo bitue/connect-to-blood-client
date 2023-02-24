@@ -10,7 +10,7 @@ const Login = () => {
     const [loading, setLoading] = useState(false);
 
     const { user, setUser, saveToken } = useContext(AuthContext);
-   
+
     const onSubmit = async (form_data) => {
         try {
             setLoading(true);
@@ -31,15 +31,13 @@ const Login = () => {
         }
     };
 
-    // useEffect(()=> {
-
-    // },[user])
-
     return (
         <>
             <Navbar></Navbar>
             {loading ? (
-                <p>I am loading ......</p>
+                <div className="flex justify-center items-center min-h-screen">
+                    <div className="loader"></div>
+                </div>
             ) : (
                 <div className="min-h-screen flex justify-center items-center">
                     <div className="flex items-center flex-col justify-center py-[25px] px-[20px]  lg:md:w-[500px] bg-[#fff] shadow-xl rounded-[20px] h-[500px]">
