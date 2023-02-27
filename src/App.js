@@ -17,6 +17,8 @@ import { useContext } from "react";
 import { AuthContext } from "../src/context/AuthProvider.jsx";
 import BlogsDetails from "./Pages/BlogsDetails";
 import BloodSearch from "./Pages/BloodSearch";
+import RequireAuth from "./Components/Shared/RequireAuth";
+import RequireAdmin from "./Components/Shared/RequireAdmin";
 
 const App = () => {
   const { loading } = useContext(AuthContext);
@@ -43,7 +45,7 @@ const App = () => {
     },
     {
       path: "/dashboard",
-      element: <Dashboard />,
+      element: <RequireAuth><Dashboard /></RequireAuth>,
       children: [
         {
           path: "",
@@ -51,15 +53,15 @@ const App = () => {
         },
         {
           path: "createAdmin",
-          element: <CreateAdmin />,
+          element: <RequireAdmin><CreateAdmin /></RequireAdmin>,
         },
         {
           path: "approveDonor",
-          element: <ApproveDonor />,
+          element: <RequireAdmin><ApproveDonor /></RequireAdmin>,
         },
         {
           path: "banUser",
-          element: <BanUsers />,
+          element: <RequireAdmin><BanUsers /></RequireAdmin>,
         },
         {
           path: "createBlog",

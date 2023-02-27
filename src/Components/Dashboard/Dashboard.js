@@ -19,7 +19,7 @@ const Dashboard = () => {
                     <ul className="menu bu p-4 z-50 overflow-y-auto w-64 bg-white text-[#222] gap-y-2">
                         {
                             user?.role === 'admin' ? <div className="collapse collapse-arrow">
-                                <input type="checkbox" className="peer" checked={user.role === "admin" ? true : true} />
+                                <input type="checkbox" className="peer" checked={user?.role === "admin" ? true : true} />
                                 <div className="collapse-title">
                                     Control Panel
                                 </div>
@@ -33,7 +33,7 @@ const Dashboard = () => {
                             </div> : <></>
                         }
                         <div className="collapse collapse-arrow">
-                            <input type="checkbox" className="peer" checked={user.role === "admin" ? true : true} />
+                            <input type="checkbox" className="peer" checked={user?.role === "admin" ? true : true} />
                             <div className="collapse-title">
                                 General
                             </div>
