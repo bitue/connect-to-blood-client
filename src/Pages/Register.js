@@ -22,7 +22,7 @@ const Register = () => {
         userData.location = location;
 
         axios
-            .post('http://localhost:5000/signup', userData)
+            .post('https://pear-gifted-lamb.cyclic.app/signup', userData)
             .then((res) => {
                 // myCode
                 console.log(res);
