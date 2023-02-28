@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import axios from 'axios';
+import { AuthContext } from '../context/AuthProvider';
 
 const MapView = () => {
     const [userLocation, setUserLocation] = useState(null);
     const [donors, setDonors] = useState([]);
     const maxDistance = 12020;
+    const { token } = useContext(AuthContext);
     const tileLayerUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
     console.log(userLocation, '................');
 
@@ -28,19 +30,23 @@ const MapView = () => {
 
     const getDonorList = async () => {
         console.log(userLocation, maxDistance);
-        const data = await axios.post(`https://pear-gifted-lamb.cyclic.app/donorListMap`, {
-            userLocation,
-            maxDistance
-        });
+        const data = await axios.post(
+            `http://localhost:5000/donorListMap`,
+            {
+                userLocation,
+                maxDistance
+            },
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`
+                }
+            }
+        );
         const donor = await data.data;
         setDonors(donor);
         console.log(donors);
     };
-
-    // useEffect(() => {
-    //     // Fetch the list of donors within a 200 km radius from the user's location
-
-    // }, [userLocation]);
 
     return (
         <div className="">
@@ -71,7 +77,8 @@ const MapView = () => {
                                 ]}
                             >
                                 <Popup>
-                                    <p>Your current location </p>
+                                    {/* donor card make korte hbe */}
+
                                     <p> {donor.email}</p>
                                     <p> {donor.phone}</p>
                                 </Popup>
