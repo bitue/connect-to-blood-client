@@ -1,24 +1,26 @@
-import Home from "./Pages/Home";
-import Login from "./Pages/Login";
-import Register from "./Pages/Register";
-import RegisterDonar from "./Pages/RegisterDonar";
-import BanUsers from "./Components/Dashboard/BanUsers";
-import CreateAdmin from "./Components/Dashboard/CreateAdmin";
-import Dashboard from "./Components/Dashboard/Dashboard";
-import UserProfile from "./Components/Dashboard/UserProfile";
-import YourArticles from "./Components/Dashboard/YourArticles";
-import Footer from "./Components/Shared/Footer";
-import About from "./Pages/About";
-import CreateBlog from "./Components/Dashboard/CreateBlog";
-import ApproveDonor from "./Components/Dashboard/ApproveDonor";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Blogs from "./Pages/Blogs";
-import { useContext } from "react";
-import { AuthContext } from "../src/context/AuthProvider.jsx";
-import BlogsDetails from "./Pages/BlogsDetails";
-import BloodSearch from "./Pages/BloodSearch";
+import Home from './Pages/Home';
+import Login from './Pages/Login';
+import Register from './Pages/Register';
+import RegisterDonar from './Pages/RegisterDonar';
+import BanUsers from './Components/Dashboard/BanUsers';
+import CreateAdmin from './Components/Dashboard/CreateAdmin';
+import Dashboard from './Components/Dashboard/Dashboard';
+import UserProfile from './Components/Dashboard/UserProfile';
+import YourArticles from './Components/Dashboard/YourArticles';
+import Footer from './Components/Shared/Footer';
+import About from './Pages/About';
+import CreateBlog from './Components/Dashboard/CreateBlog';
+import ApproveDonor from './Components/Dashboard/ApproveDonor';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Blogs from './Pages/Blogs';
+import { useContext } from 'react';
+import { AuthContext } from '../src/context/AuthProvider.jsx';
+import BlogsDetails from './Pages/BlogsDetails';
+import BloodSearch from './Pages/BloodSearch';
+import MapView from './Pages/MapView';
 import RequireAuth from "./Components/Shared/RequireAuth";
 import RequireAdmin from "./Components/Shared/RequireAdmin";
+
 
 const App = () => {
   const { loading } = useContext(AuthContext);
@@ -48,44 +50,49 @@ const App = () => {
       element: <RequireAuth><Dashboard /></RequireAuth>,
       children: [
         {
-          path: "",
-          element: <UserProfile />,
+          path: '',
+          element: <UserProfile />
         },
         {
-          path: "createAdmin",
-          element: <RequireAdmin><CreateAdmin /></RequireAdmin>,
+          path: 'createAdmin',
+          element: <RequireAdmin><CreateAdmin /></RequireAdmin>
         },
         {
-          path: "approveDonor",
-          element: <RequireAdmin><ApproveDonor /></RequireAdmin>,
+          path: 'approveDonor',
+          element: <RequireAdmin><ApproveDonor /></RequireAdmin>
         },
         {
-          path: "banUser",
-          element: <RequireAdmin><BanUsers /></RequireAdmin>,
+          path: 'banUser',
+          element: <RequireAdmin><BanUsers /></RequireAdmin>
         },
         {
-          path: "createBlog",
-          element: <CreateBlog />,
+          path: 'createBlog',
+          element: <CreateBlog />
         },
         {
-          path: "yourArticles",
-          element: <YourArticles />,
+          path: 'yourArticles',
+          element: <YourArticles />
         },
-      ],
+      ]
     },
     {
-      path: "/about",
-      element: <About />,
+      path: '/about',
+      element: <About />
     },
     {
-      path: "/blogs/:id",
-      element: <BlogsDetails />,
+      path: '/blogs/:id',
+      element: <BlogsDetails />
     },
     {
-      path: "/bloodSearch",
+      path: '/bloodSearch',
       element: <BloodSearch />
-    }
+    },
+    {
+      path: '/mapView',
+      element: <MapView />
+    },
   ]);
+
 
   return (
     <div>
@@ -98,9 +105,7 @@ const App = () => {
           <RouterProvider router={router} />
           <Footer />
         </>
-
       )}
-
     </div>
   );
 };

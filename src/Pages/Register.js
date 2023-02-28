@@ -1,33 +1,70 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import Navbar from '../Components/Shared/Navbar';
+import { AuthContext } from '../context/AuthProvider';
 
 const Register = () => {
     const { register, handleSubmit } = useForm();
     const bloodTypes = ['A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-'];
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+    const [err, setErr] = useState('');
+
+    const { setUser, saveToken } = useContext(AuthContext);
+
+    let location;
 
     const onSubmit = (userData) => {
-        setLoading(true)
-        axios.post("https://pear-gifted-lamb.cyclic.app/signup", userData)
-            .then(res => {
-                localStorage.setItem("token", res.headers.authorization)
-                setLoading(false)
-                if (localStorage.getItem("token"))
-                    navigate("/")
+        setLoading(true);
+        // add the location here
+        userData.location = location;
+
+        axios
+            .post('https://pear-gifted-lamb.cyclic.app/signup', userData)
+            .then((res) => {
+                console.log(res);
+                const user = res.data.user;
+                setUser(user);
+                saveToken(res.headers.authorization);
+                setLoading(false);
+                navigate('/dashboard');
             })
-            .catch(error => console.log(error))
+            .catch((error) => console.log(error));
     };
+
+    const handleLocationClick = () => {
+        console.log(1);
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                const { latitude, longitude } = position.coords;
+
+                // Update the donor location state
+                // setDonor(prevDonor => ({
+                //   ...prevDonor,
+                location = { type: 'Point', coordinates: [longitude, latitude] };
+                // }));
+                console.log(position.coords);
+            },
+            (error) => {
+                console.log(error);
+                setErr(error);
+            }
+        );
+    };
+    useEffect(() => {
+        handleLocationClick();
+    }, []);
 
     return (
         <>
-            {
-                loading ? <div className="flex justify-center items-center min-h-screen">
+            {loading ? (
+                <div className="flex justify-center items-center min-h-screen">
                     <div className="loader"></div>
-                </div> : <>
+                </div>
+            ) : (
+                <>
                     <Navbar></Navbar>
                     <div className="flex justify-center items-center my-[30px]">
                         <div className="flex items-center flex-col justify-center py-[25px] px-[20px]  lg:md:w-[500px] bg-[#fff] shadow-xl rounded-[20px]">
@@ -58,7 +95,9 @@ const Register = () => {
 
                                     <div className="form-control w-full max-w-xs">
                                         <label className="label">
-                                            <span className="label-text text-secondary">Password</span>
+                                            <span className="label-text text-secondary">
+                                                Password
+                                            </span>
                                         </label>
                                         <input
                                             type="password"
@@ -88,7 +127,9 @@ const Register = () => {
 
                                     <div className="form-control w-full max-w-xs">
                                         <label className="label">
-                                            <span className="label-text text-secondary">Phone Number</span>
+                                            <span className="label-text text-secondary">
+                                                Phone Number
+                                            </span>
                                         </label>
                                         <input
                                             type="phone"
@@ -100,9 +141,11 @@ const Register = () => {
                                         />
                                     </div>
 
-                                    <div className="form-control w-full max-w-xs">
+                                    {/* <div className="form-control w-full max-w-xs">
                                         <label className="label">
-                                            <span className="label-text text-secondary">Location</span>
+                                            <span className="label-text text-secondary">
+                                                Location
+                                            </span>
                                         </label>
                                         <input
                                             type="text"
@@ -112,7 +155,7 @@ const Register = () => {
                                                 required: true
                                             })}
                                         />
-                                    </div>
+                                    </div> */}
 
                                     <select
                                         className="select mb-[20px] border-secondary w-full max-w-xs"
@@ -131,6 +174,7 @@ const Register = () => {
                                             );
                                         })}
                                     </select>
+                                    {/* make dynamic if error occur in getting  geolocation data */}
 
                                     <button className="btn w-[325px] text-black hover:text-white hover:bg-primary hover:border-none">
                                         Register
@@ -148,7 +192,7 @@ const Register = () => {
                         </div>
                     </div>
                 </>
-            }
+            )}
         </>
     );
 };
