@@ -5,11 +5,20 @@ import L from 'leaflet';
 import axios from 'axios';
 import { AuthContext } from '../context/AuthProvider';
 
+import { useLocation } from 'react-router-dom';
+
 const MapView = () => {
     const [userLocation, setUserLocation] = useState(null);
     const [donors, setDonors] = useState([]);
     const maxDistance = 12020;
     const { token } = useContext(AuthContext);
+    // const { bloodType, distance } = useUserQuery();
+    const { state } = useLocation();
+    const { distance, bloodType } = state;
+
+    console.log(bloodType, distance);
+    console.log(state, ' from navigate');
+
     const tileLayerUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
     console.log(userLocation, '................');
 
@@ -31,10 +40,11 @@ const MapView = () => {
     const getDonorList = async () => {
         console.log(userLocation, maxDistance);
         const data = await axios.post(
-            `http://localhost:5000/donorListMap`,
+            `https://pear-gifted-lamb.cyclic.app/donorListMap`,
             {
                 userLocation,
-                maxDistance
+                maxDistance: distance,
+                bloodType
             },
             {
                 headers: {
@@ -43,8 +53,8 @@ const MapView = () => {
                 }
             }
         );
-        const donor = await data.data;
-        setDonors(donor);
+        const donors = await data.data;
+        setDonors(donors);
         console.log(donors);
     };
 

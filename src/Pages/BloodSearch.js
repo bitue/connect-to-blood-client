@@ -1,22 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../Components/Shared/Navbar';
-// import { Redirect } from 'react-router-dom';
+
+import { useNavigate } from 'react-router-dom';
 
 const BloodSearch = () => {
-    const [userLocation, setUserLocation] = useState(null);
-    const [kilometers, setKilometers] = useState('');
-    const [bloodType, setBloodType] = useState('');
+    const navigate = useNavigate();
+
     const [step, setStep] = useState(2);
+    const [bloodType, setBloodType] = useState('');
+    const [distance, setDistance] = useState(0);
 
     // browser automatic get user location here
-    useEffect(() => {
-        navigator.geolocation.getCurrentPosition((position) => {
-            setUserLocation({
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-            });
-        });
-    }, []);
+    // useEffect(() => {
+    //     navigator.geolocation.getCurrentPosition((position) => {
+    //         setUserLocation({
+    //             lat: position.coords.latitude,
+    //             lng: position.coords.longitude
+    //         });
+    //     });
+    // }, []);
 
     const handleNextStep = (event) => {
         event.preventDefault();
@@ -29,7 +31,8 @@ const BloodSearch = () => {
     };
 
     const handleFinish = (event) => {
-        console.log(kilometers, userLocation, bloodType);
+        console.log(distance, bloodType);
+        navigate('/mapView', { state: { distance, bloodType } });
 
         event.preventDefault();
     };
@@ -68,13 +71,13 @@ const BloodSearch = () => {
                                 type="text"
                                 placeholder="Enter kilometers"
                                 className="input w-full sm:w-64 md:w-80 lg:w-96 text-lg"
-                                onChange={(event) => setKilometers(event.target.value)}
-                                value={kilometers}
+                                onChange={(event) => setDistance(event.target.value)}
+                                value={distance}
                             />
                             <div className="flex justify-center items-center">
                                 <button
                                     className="btn mt-[10px] text-[#fff] gap-2 bg-primary border-primary hover:bg-[#222] disabled:bg-[#f3f3f3] mr-[30px]"
-                                    disabled={!kilometers}
+                                    disabled={!distance}
                                     onClick={handleNextStep}
                                 >
                                     Next
