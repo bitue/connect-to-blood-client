@@ -16,7 +16,7 @@ const Register = () => {
             .then(res => {
                 localStorage.setItem("token", res.headers.authorization)
                 setLoading(false)
-                if(localStorage.getItem("token")) 
+                if (localStorage.getItem("token"))
                     navigate("/")
             })
             .catch(error => console.log(error))
