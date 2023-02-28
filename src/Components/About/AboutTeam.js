@@ -73,10 +73,7 @@ const AboutTeam = () => {
                             <p className="personEmail">{info.email}</p>
                             <p className="peronPhone">Phone: {info.phone}</p>
                             <p className="shortDescription">{info.short_description}</p>
-                            <img
-                                src="https://tenor.com/view/drop-of-blood-objects-joypixels-bit-of-blood-blood-stain-gif-17448098"
-                                alt=""
-                            />
+                           
                         </div>
                     </dic>
                 ))}
