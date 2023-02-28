@@ -117,6 +117,8 @@ const BlogsDetails = () => {
             </button>
             <span>{comments?.length || 0} Comments</span>
           </div>
+        </div>
+        <div class="mt-4 bg-white rounded-md shadow-lg p-4">
           {showCommentForm && (
             <form onSubmit={handleCommentSubmit} className="mt-4">
               <div className="flex items-start">
@@ -151,15 +153,11 @@ const BlogsDetails = () => {
               </div>
             </form>
           )}
-        </div>
-        <div className="mt-4">
+
           {comments &&
             comments.map((comment) => (
-              <div
-                key={comment._id}
-                className="bg-gray-100 p-4 mb-4 rounded-md"
-              >
-                <p className="text-sm text-gray-600">{comment?.comment}</p>
+              <div class="p-4 my-4 bg-gray-100 rounded-md" key={comment._id}>
+                <p class="text-gray-600 text-sm">{comment.comment}</p>
               </div>
             ))}
         </div>
