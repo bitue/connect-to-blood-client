@@ -6,6 +6,7 @@ export const useToken = () => {
     const [token, setToken] = useState(localStorage.getItem('token') || '');
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(false);
+
     const saveToken = (token) => {
         localStorage.setItem('token', token);
         setToken(token);
@@ -14,6 +15,7 @@ export const useToken = () => {
     const clearToken = () => {
         localStorage.removeItem('token');
         setToken('');
+
         //setUser(null);
     };
 

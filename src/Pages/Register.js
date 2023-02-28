@@ -24,23 +24,17 @@ const Register = () => {
         axios
             .post('https://pear-gifted-lamb.cyclic.app/signup', userData)
             .then((res) => {
-                // myCode
                 console.log(res);
                 const user = res.data.user;
-                // user set done !
                 setUser(user);
-                // set the token
                 saveToken(res.headers.authorization);
-                // localStorage.setItem('token', res.headers.authorization);
                 setLoading(false);
                 navigate('/dashboard');
-                // if (localStorage.getItem('token')) navigate('/');
             })
             .catch((error) => console.log(error));
     };
 
     const handleLocationClick = () => {
-        // Get the user's current location
         console.log(1);
         navigator.geolocation.getCurrentPosition(
             (position) => {

@@ -7,7 +7,7 @@ import axios from 'axios';
 const MapView = () => {
     const [userLocation, setUserLocation] = useState(null);
     const [donors, setDonors] = useState([]);
-    const maxDistance = 200;
+    const maxDistance = 12020;
     const tileLayerUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
     console.log(userLocation, '................');
 
@@ -28,7 +28,7 @@ const MapView = () => {
 
     const getDonorList = async () => {
         console.log(userLocation, maxDistance);
-        const data = await axios.post(`http://localhost:5000/donorListMap`, {
+        const data = await axios.post(`https://pear-gifted-lamb.cyclic.app/donorListMap`, {
             userLocation,
             maxDistance
         });

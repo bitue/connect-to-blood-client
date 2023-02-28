@@ -3,14 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 
 const RequireAdmin = ({ children }) => {
-    const { user, token } = useContext(AuthContext) // get user from AuthContext
+    const { user, token } = useContext(AuthContext)
     const navigate = useNavigate()
 
     useEffect(() => {
         if (token === null) {
             navigate("/login")
         }
-    }, [user, navigate, token])
+    }, [user, token])
 
     if (user?.role === "admin") {
         return (

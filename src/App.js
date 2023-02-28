@@ -111,5 +111,3 @@ const App = () => {
 };
 
 export default App;
-message.txt
-3 KB
