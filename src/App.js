@@ -18,96 +18,98 @@ import { AuthContext } from '../src/context/AuthProvider.jsx';
 import BlogsDetails from './Pages/BlogsDetails';
 import BloodSearch from './Pages/BloodSearch';
 import MapView from './Pages/MapView';
+import RequireAuth from "./Components/Shared/RequireAuth";
+import RequireAdmin from "./Components/Shared/RequireAdmin";
+
 
 const App = () => {
-    const { loading } = useContext(AuthContext);
-    const router = createBrowserRouter([
+  const { loading } = useContext(AuthContext);
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Home />,
+    },
+    {
+      path: "/blogs",
+      element: <Blogs />,
+    },
+    {
+      path: "/login",
+      element: <Login />,
+    },
+    {
+      path: "/register",
+      element: <Register />,
+    },
+    {
+      path: "/registerDonar",
+      element: <RegisterDonar />,
+    },
+    {
+      path: "/dashboard",
+      element: <RequireAuth><Dashboard /></RequireAuth>,
+      children: [
         {
-            path: '/',
-            element: <Home />
+          path: '',
+          element: <UserProfile />
         },
         {
-            path: '/blogs',
-            element: <Blogs />
+          path: 'createAdmin',
+          element: <RequireAdmin><CreateAdmin /></RequireAdmin>
         },
         {
-            path: '/login',
-            element: <Login />
+          path: 'approveDonor',
+          element: <RequireAdmin><ApproveDonor /></RequireAdmin>
         },
         {
-            path: '/register',
-            element: <Register />
+          path: 'banUser',
+          element: <RequireAdmin><BanUsers /></RequireAdmin>
         },
         {
-            path: '/registerDonar',
-            element: <RegisterDonar />
+          path: 'createBlog',
+          element: <CreateBlog />
         },
         {
-            path: '/mapView',
-            element: <MapView />
+          path: 'yourArticles',
+          element: <YourArticles />
         },
-        {
-            path: '/dashboard',
-            element: <Dashboard />,
-            children: [
-                {
-                    path: '',
-                    element: <UserProfile />
-                },
-                {
-                    path: 'createAdmin',
-                    element: <CreateAdmin />
-                },
-                {
-                    path: 'approveDonor',
-                    element: <ApproveDonor />
-                },
-                {
-                    path: 'banUser',
-                    element: <BanUsers />
-                },
-                {
-                    path: 'createBlog',
-                    element: <CreateBlog />
-                }
-            ]
-        },
-        {
-            path: 'banUser',
-            element: <BanUsers />
-        },
-        {
-            path: 'yourArticles',
-            element: <YourArticles />
-        },
-        {
-            path: '/about',
-            element: <About />
-        },
-        {
-            path: '/blogs/:id',
-            element: <BlogsDetails />
-        },
-        {
-            path: '/bloodSearch',
-            element: <BloodSearch />
-        }
-    ]);
+      ]
+    },
+    {
+      path: '/about',
+      element: <About />
+    },
+    {
+      path: '/blogs/:id',
+      element: <BlogsDetails />
+    },
+    {
+      path: '/bloodSearch',
+      element: <BloodSearch />
+    },
+    {
+      path: '/mapView',
+      element: <MapView />
+    },
+  ]);
 
-    return (
-        <div>
-            {loading ? (
-                <div className="min-h-screen flex justify-center items-center">
-                    <div className="loader"></div>
-                </div>
-            ) : (
-                <>
-                    <RouterProvider router={router} />
-                    <Footer />
-                </>
-            )}
+
+  return (
+    <div>
+      {loading ? (
+        <div className="min-h-screen flex justify-center items-center">
+          <div className="loader"></div>
         </div>
-    );
+      ) : (
+        <>
+          <RouterProvider router={router} />
+          <Footer />
+        </>
+      )}
+    </div>
+  );
 };
 
 export default App;
+message.txt
+3 KB
