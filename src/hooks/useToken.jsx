@@ -6,6 +6,7 @@ export const useToken = () => {
     const [token, setToken] = useState(localStorage.getItem('token') || '');
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(false);
+
     const saveToken = (token) => {
         localStorage.setItem('token', token);
         setToken(token);
@@ -14,6 +15,7 @@ export const useToken = () => {
     const clearToken = () => {
         localStorage.removeItem('token');
         setToken('');
+
         //setUser(null);
     };
 
@@ -23,13 +25,17 @@ export const useToken = () => {
                 return;
             }
             setLoading(true); // got the token so loading is on to fetch user
-            const res = axios.get('https://pear-gifted-lamb.cyclic.app/public/getUserByToken', {
-                headers: {
-                    Authorization: `Bearer ${token}`
+            const res = await axios.get(
+                'https://pear-gifted-lamb.cyclic.app/public/getUserByToken',
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
                 }
-            });
-            const user = (await res).data;
+            );
+            const user = res.data;
             setUser(user);
+            console.log(user);
             setLoading(false); // got user or not but loading now false ;
         } catch (err) {
             // unauthorized user !!! need to add frontend page that unAuthorized msg !
