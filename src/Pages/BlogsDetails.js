@@ -12,7 +12,7 @@ import { AuthContext } from "../context/AuthProvider";
 
 const BlogsDetails = () => {
   const { id } = useParams();
-  const { token } = useContext(AuthContext);
+  const { token, user } = useContext(AuthContext);
   const [blog, setBlog] = useState({});
   const [commentText, setCommentText] = useState("");
   const [showCommentForm, setShowCommentForm] = useState(false);
@@ -72,11 +72,23 @@ const BlogsDetails = () => {
     setShowCommentForm(false);
   };
 
-  const handleLike = () => {
-    setLikeCount(likeCount + 1);
+  const handleVote = () => {
+    axios
+      .get(`https://pear-gifted-lamb.cyclic.app/vote`, {
+        body: {
+          blog_id: blog._id,
+          user_id: user._id,
+        },
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => console.log(res))
+      .catch((error) => console.log(error));
   };
 
-  const { title, author, user, createdAt, img, content, comments } = blog;
+  const { title, author, userEmail, createdAt, img, content, comments } = blog;
 
   return (
     <>
@@ -91,7 +103,7 @@ const BlogsDetails = () => {
           />
           <div className="flex justify-between items-center">
             <p className="text-sm text-secondary mr-[30px]">
-              {user?.email?.split("@")[0]}
+              {userEmail?.email?.split("@")[0]}
             </p>
             <p className="text-sm text-secondary">{createdAt?.split("T")[0]}</p>
           </div>
@@ -105,9 +117,9 @@ const BlogsDetails = () => {
           <p className="text-base leading-7">{content}</p>
         </div>
         <div className="flex items-center mt-4">
-          <button onClick={handleLike} className="mr-[10px]">
+          <button onClick={handleVote} className="mr-[10px]">
             <FontAwesomeIcon icon={faThumbsUp} className="h-4 w-4 mr-2" />
-            Like
+            Vote
           </button>
           <div className="flex items-center">
             <button onClick={handleComment} className="mr-[10px]">
