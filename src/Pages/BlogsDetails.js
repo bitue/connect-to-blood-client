@@ -17,6 +17,7 @@ const BlogsDetails = () => {
   const [commentText, setCommentText] = useState("");
   const [showCommentForm, setShowCommentForm] = useState(false);
   const [showComments, setShowComments] = useState(false);
+  const [likeCount, setLikeCount] = useState(0);
 
   useEffect(() => {
     axios
@@ -26,12 +27,6 @@ const BlogsDetails = () => {
       .then((res) => setBlog(res.data.data))
       .catch((error) => console.log(error));
   }, []);
-
-  const handleUpvote = () => {
-    if (blog.upvotes >= 10) {
-      setBlog((prevBlog) => ({ ...prevBlog, upvotes: prevBlog.upvotes + 1 }));
-    }
-  };
 
   const handleCommentChange = (e) => {
     setCommentText(e.target.value);
@@ -77,6 +72,10 @@ const BlogsDetails = () => {
     setShowCommentForm(false);
   };
 
+  const handleLike = () => {
+    setLikeCount(likeCount + 1);
+  };
+
   const { title, author, user, createdAt, img, content, comments } = blog;
 
   return (
@@ -106,7 +105,7 @@ const BlogsDetails = () => {
           <p className="text-base leading-7">{content}</p>
         </div>
         <div className="flex items-center mt-4">
-          <button onClick={handleUpvote} className="mr-[10px]">
+          <button onClick={handleLike} className="mr-[10px]">
             <FontAwesomeIcon icon={faThumbsUp} className="h-4 w-4 mr-2" />
             Like
           </button>

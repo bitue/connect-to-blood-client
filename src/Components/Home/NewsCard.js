@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const NewsCard = ({ news }) => {
     // console.log(news)
-    const blogLike = () => {};
+    const blogLike = () => { };
     return (
         <div className="card card-compact rounded-b-md rounded-t-none w-96 bg-base-100 shadow-none h-[500px]">
             <figure>
@@ -24,10 +24,10 @@ const NewsCard = ({ news }) => {
                     <p className="text-right">{news?.createdAt.split('T')[0]}</p>
                 </div>
                 <div className="w-[95%] flex justify-center items-center mx-auto text-center">
-                    <p>{news.comments[0]?.comment}</p>
+                    <p>{news?.comments[0]?.comment}</p>
                 </div>
 
-                <Link to={`/blogs/${news._id}`} className="w-[100%]">
+                <Link to={`/blogs/${news?._id}`} className="w-[100%]">
                     <button class="btn w-[100%] text-[#fff] gap-2 bg-primary border-primary hover:bg-[#222]">
                         Read more
                     </button>
