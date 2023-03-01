@@ -1,18 +1,27 @@
+import axios from 'axios';
 import React from 'react';
+import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import Navbar from '../Components/Shared/Navbar';
+import { AuthContext } from '../context/AuthProvider';
 
 const RegisterDonar = () => {
     const { register, handleSubmit } = useForm();
+    const { token, user } = useContext(AuthContext)
     const onSubmit = (data) => {
         const BMI = data.weight / ((data.height / 100) * (data.height / 100));
-        // ------------------ Need to add userId to put here at user property ----------------
-        //data.user = user._id
-        // check the user password === data.password
-        console.log(BMI);
+
         data.BMI = BMI;
+        data.user = user;
         console.log(data);
+        axios.post("https://pear-gifted-lamb.cyclic.app/donorRequest", data, {
+            headers: {
+                'Content-Type': "application/json",
+                authorization: `Bearer ${token}`
+            }
+        }).then(res => console.log(res))
+            .catch(error => console.log(error))
     };
     const bloodTypes = ['A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-'];
 
@@ -31,14 +40,6 @@ const RegisterDonar = () => {
                             className="flex flex-col justify-center items-center"
                         >
                             <div className="form-control w-full max-w-xs">
-                                <label className="label">
-                                    <span className="label-text text-secondary">Your password</span>
-                                    <span className="label-text text-secondary">
-                                        <Link to="/fPassword" className="text-blue-500">
-                                            Forgot password?
-                                        </Link>
-                                    </span>
-                                </label>
                                 <input
                                     type="password"
                                     placeholder="Your password"
