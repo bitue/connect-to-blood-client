@@ -42,7 +42,7 @@ const App = () => {
       element: <Register />,
     },
     {
-      path: "/registerDonar",
+      path: "/registerDonor",
       element: <RegisterDonar />,
     },
     {

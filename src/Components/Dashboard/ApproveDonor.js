@@ -32,10 +32,8 @@ const ApproveDonor = () => {
                             <th className="bg-[#222] text-[#f1f1f1]"></th>
                             <th className="bg-[#222] text-[#f1f1f1]">Name</th>
                             <th className="bg-[#222] text-[#f1f1f1]">Email</th>
-                            <th className="bg-[#222] text-[#f1f1f1]">HIV</th>
                             <th className="bg-[#222] text-[#f1f1f1]">Blood Type</th>
-                            <th className="bg-[#222] text-[#f1f1f1]">Smoked</th>
-                            <th className="bg-[#222] text-[#f1f1f1]">Hypertension</th>
+                            <th className="bg-[#222] text-[#f1f1f1]">Learn more</th>
                             <th className="bg-[#222] text-[#f1f1f1]">Approve</th>
                             <th className="bg-[#222] text-[#f1f1f1]">Deny</th>
                         </tr>
@@ -44,13 +42,14 @@ const ApproveDonor = () => {
                         {
                             donorRequest.map((user, index) => <tr className="border-[#222]">
                                 <th>{index + 1}</th>
-                                <td>Cy Ganderton</td>
-                                <td>Cyganderton@gmail.com</td>
-                                <td>{user.hiv}</td>
-                                <td>A+</td>
-                                <td>{user.smoke}</td>
-                                <td>False</td>
-                                <td>False</td>
+                                <td>{user?.user?.email.split('@')[0]}</td>
+                                <td>{user?.user?.email}</td>
+                                <td>{user?.user?.bloodType}</td>
+                                <td>
+                                    <button class="btn no-animation gap-2 bg-green-500 mr-[14px] hover:bg-primary hover:border-primary text-white">
+                                        <label htmlFor={`my-modal-${index}`}>Learn more</label>
+                                    </button>
+                                </td>
                                 <td>
                                     <button class="btn no-animation gap-2 bg-green-500 mr-[14px] hover:bg-primary hover:border-primary text-white">
                                         Approve
@@ -61,6 +60,23 @@ const ApproveDonor = () => {
                                         Deny
                                     </button>
                                 </td>
+
+
+                                <input type="checkbox" id={`my-modal-${index}`} className="modal-toggle" />
+                                <div className="modal">
+                                    <div className="modal-box relative">
+                                        <label htmlFor={`my-modal-${index}`} className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                                        <h3 className="text-lg font-bold">Health data for {user.user.email.split("@")[0]}</h3>
+                                        <ul>
+                                            <li>HIV: {user.hiv}</li>
+                                            <li>Date of Birth: {user.dateOfBirth.split("T")[0]}</li>
+                                            <li>Hypertension: {user.hypertension}</li>
+                                            <li>Last Blood donation: {user.lastBloodDonation}</li>
+                                            <li>Smoke: {user.smoke}</li>
+                                            <li>Weight: {user.weight}</li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </tr>)
                         }
 
