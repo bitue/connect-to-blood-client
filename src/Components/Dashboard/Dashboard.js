@@ -14,9 +14,9 @@ const Dashboard = () => {
                 <div className="drawer-content">
                     <Outlet></Outlet>
                 </div>
-                <div className="drawer-side">
+                <div className="drawer-side h-[100%]">
                     <label htmlFor="sidebar-dashboard" className="drawer-overlay"></label>
-                    <ul className="menu bu p-4 z-50 overflow-y-auto w-64 bg-white text-[#222] gap-y-2">
+                    <ul className="menu p-4 z-50 overflow-y-scroll w-64 bg-white text-[#222] gap-y-2 h-[100%]">
                         {
                             user?.role === 'admin' ?
                                 <div className="collapse collapse-arrow">
