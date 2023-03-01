@@ -20,6 +20,7 @@ import BloodSearch from './Pages/BloodSearch';
 import MapView from './Pages/MapView';
 import RequireAuth from "./Components/Shared/RequireAuth";
 import RequireAdmin from "./Components/Shared/RequireAdmin";
+import { ToastContainer } from 'react-toastify';
 
 
 const App = () => {
@@ -101,11 +102,13 @@ const App = () => {
           <div className="loader"></div>
         </div>
       ) : (
+
         <>
           <RouterProvider router={router} />
           <Footer />
         </>
       )}
+      <ToastContainer />
     </div>
   );
 };
