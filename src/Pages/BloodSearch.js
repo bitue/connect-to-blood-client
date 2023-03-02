@@ -10,16 +10,6 @@ const BloodSearch = () => {
     const [bloodType, setBloodType] = useState('');
     const [distance, setDistance] = useState(0);
 
-    // browser automatic get user location here
-    // useEffect(() => {
-    //     navigator.geolocation.getCurrentPosition((position) => {
-    //         setUserLocation({
-    //             lat: position.coords.latitude,
-    //             lng: position.coords.longitude
-    //         });
-    //     });
-    // }, []);
-
     const handleNextStep = (event) => {
         event.preventDefault();
         setStep(step + 1);
