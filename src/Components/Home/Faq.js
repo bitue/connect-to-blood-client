@@ -7,12 +7,12 @@ const data = [
     paragraph:
       "A few days before donating, eat nutritious meals that contain iron-rich foods. The day before donation, drink plenty of fluids and get a good night’s sleep. The day of donation, drink non-caffeinated beverages such as water or juice and do not skip any meals.",
   },
-  {
+  /* {
     tabIndex: 1,
     title: "How often can I donate?",
     paragraph:
       "You can typically donate blood every 56 days. However, the exact time between donations depends on several factors, such as the type of donation and your health history.",
-  },
+  }, */
   {
     tabIndex: 2,
     title: "How will I feel after I donate?",
@@ -50,19 +50,24 @@ const Faq = () => {
     );
   };
   return (
-    <div className="flex flex-col lg:flex-col lg:flex-wrap lg:justify-center place-content-center mx-auto p-4 ">
-      <h1 className="text-4xl font-bold text-center my-5">
-        Frequently Asked <span className="text-[#ED4245]"> Questions</span>
-      </h1>
-      {data.map((question) => (
-        <Collapse
-          key={question.tabIndex}
-          tabIndex={question.tabIndex}
-          title={question.title}
-          paragraph={question.paragraph}
-        />
-      ))}
-    </div>
+    < div className="hero min-h-screen" >
+      <div className="hero-content flex-col lg:flex-row">
+        <img src="https://imgdb.net/storage/uploads/9a65e48f88f6a85876c2e5a61da6f1c5983a7be54f1298db3d2fcd15059f8131.png" />
+        <div className="flex flex-col lg:flex-col lg:flex-wrap lg:justify-center place-content-center mx-auto p-4 ">
+          <h1 className="text-4xl font-bold text-center my-5">
+            Frequently Asked <span className="text-[#ED4245]"> Questions</span>
+          </h1>
+          {data.map((question) => (
+            <Collapse
+              key={question.tabIndex}
+              tabIndex={question.tabIndex}
+              title={question.title}
+              paragraph={question.paragraph}
+            />
+          ))}
+        </div>
+      </div>
+    </ div >
   );
 };
 
