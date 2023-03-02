@@ -27,35 +27,32 @@ const ApproveDonor = () => {
     console.log(donorRequest);
 
     const handleApprove = (uid) => {
-        console.log(uid);
-        axios
-            .put(
-                `http://localhost:5000/admin/approveDonorReq?id=${uid}`,
-                {},
-                {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        Authorization: `Bearer ${token}`
-                    }
-                }
-            )
-            .then((res) => {
-                console.log(res);
+        console.log(uid)
+        fetch(`https://pear-gifted-lamb.cyclic.app/admin/approveDonorReq?id=${uid}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': "application/json",
+                Authorization: `Bearer ${token}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
                 toast.success('Successfully made user Donor', {
-                    position: 'top-right',
+                    position: "top-right",
                     autoClose: 5000,
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: true,
                     draggable: true,
                     progress: undefined,
-                    theme: 'light'
-                });
+                    theme: "light",
+                })
                 fetchData();
             })
-            .catch((error) => {
+            .catch(error => {
                 toast.error('Something went wrong!', {
-                    position: 'top-right',
+                    position: "top-right",
                     autoClose: 5000,
                     hideProgressBar: false,
                     closeOnClick: true,
@@ -67,7 +64,9 @@ const ApproveDonor = () => {
                 console.log(error);
                 fetchData();
             });
-    };
+
+
+    }
 
     const handleDeny = (id) => {
         axios

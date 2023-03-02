@@ -23,9 +23,7 @@ const NewsCard = ({ news }) => {
                     </p>
                     <p className="text-right">{news?.createdAt.split('T')[0]}</p>
                 </div>
-                <div className="w-[95%] flex justify-center items-center mx-auto text-center">
-                    <p>{news?.comments[0]?.comment}</p>
-                </div>
+                
 
                 <Link to={`/blogs/${news?._id}`} className="w-[100%]">
                     <button class="btn w-[100%] text-[#fff] gap-2 bg-primary border-primary hover:bg-[#222]">

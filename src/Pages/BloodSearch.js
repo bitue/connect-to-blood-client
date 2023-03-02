@@ -68,7 +68,9 @@ const BloodSearch = () => {
                     {step === 2 && (
                         <form action="" className="flex justify-center items-center flex-col">
                             <input
-                                type="text"
+                                type="number"
+                                min={0}
+                                max={1000}
                                 placeholder="Enter kilometers"
                                 className="input w-full sm:w-64 md:w-80 lg:w-96 text-lg"
                                 onChange={(event) => setDistance(event.target.value)}
