@@ -26,25 +26,28 @@ const ApproveDonor = () => {
 
     const handleApprove = (uid) => {
         console.log(uid)
-        axios.put(`https://pear-gifted-lamb.cyclic.app/admin/approveDonorReq?id=${uid}`, {
+        fetch(`https://pear-gifted-lamb.cyclic.app/admin/approveDonorReq?id=${uid}`, {
+            method: 'PUT',
             headers: {
                 'Content-Type': "application/json",
                 Authorization: `Bearer ${token}`
             }
-        }).then(res => {
-            console.log(res)
-            toast.success('Successfully made user Donor', {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-            })
-            fetchData()
         })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                toast.success('Successfully made user Donor', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                })
+                fetchData();
+            })
             .catch(error => {
                 toast.error('Something went wrong!', {
                     position: "top-right",
@@ -56,9 +59,10 @@ const ApproveDonor = () => {
                     progress: undefined,
                     theme: "light",
                 });
-                console.log(error)
-                fetchData()
-            })
+                console.log(error);
+                fetchData();
+            });
+
 
     }
 
