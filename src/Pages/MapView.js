@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import axios from 'axios';
@@ -36,9 +38,15 @@ const MapView = () => {
             });
         });
     }, []);
+    useEffect(() => {
+        if (userLocation) {
+            getDonorList();
+        }
+    }, [userLocation]);
 
     const getDonorList = async () => {
         console.log(userLocation, maxDistance);
+
         const data = await axios.post(
             `https://pear-gifted-lamb.cyclic.app/donorListMap`,
             {
@@ -63,7 +71,8 @@ const MapView = () => {
             <h1>
                 Map view {userLocation?.lat} {userLocation?.lng}
             </h1>
-            <button onClick={getDonorList}>getDonor </button>
+            <h1>Donor Find : {donors?.length}</h1>
+
             {userLocation && (
                 <div className="">
                     <MapContainer
@@ -87,10 +96,17 @@ const MapView = () => {
                                 ]}
                             >
                                 <Popup>
-                                    {/* donor card make korte hbe */}
-
-                                    <p> {donor.email}</p>
-                                    <p> {donor.phone}</p>
+                                    <div className="mt-4 ">
+                                        <p className="text-black ">Donor Details</p>
+                                        <p className="text-black ">
+                                            <FontAwesomeIcon icon={faEnvelope} className="mr-2" />
+                                            <a href={`mailto:${donor.email}`}>{donor.email}</a>
+                                        </p>
+                                        <p className="text-black ">
+                                            <FontAwesomeIcon icon={faPhone} className="mr-2" />
+                                            <a href={`tel:${donor.phone}`}>{donor.phone}</a>
+                                        </p>
+                                    </div>
                                 </Popup>
                             </Marker>
                         ))}
