@@ -71,18 +71,21 @@ const MapView = () => {
         <>
             <Navbar />
             <div className="">
-                <h1>
-                    Map view {userLocation?.lat} {userLocation?.lng}
-                </h1>
-                <h1>Donor Find : {donors?.length}</h1>
+                <div className="flex justify-around items-center my-[30px] text-1xl">
+                    <h1>
+                        <span className="text-primary font-bold ">Your Location:</span> {userLocation?.lat} {userLocation?.lng}
+                    </h1>
+                    <h1 className=""><span className="text-primary font-bold">Donor Find : </span>{donors?.length}</h1>
+                </div>
+                <button className="flex justify-cen"></button>
 
                 {userLocation && (
-                    <div className="">
+                    <div className="h-[100%]">
                         <MapContainer
                             center={userLocation}
                             zoom={13}
                             scrollWheelZoom={true}
-                            style={{ height: '100vh', width: '100vw' }}
+                            style={{ height: '100vh', width: '100%' }}
                         >
                             <TileLayer url={tileLayerUrl} />
                             <Marker position={userLocation}>

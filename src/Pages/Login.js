@@ -40,7 +40,7 @@ const Login = () => {
                     <div className="loader"></div>
                 </div>
             ) : (
-                <div className="min-h-screen flex justify-center items-center">
+                <div className="min-h-screen flex justify-center items-center my-[10px]">
                     <div className="flex items-center flex-col justify-center py-[25px] px-[20px]  lg:md:w-[500px] bg-[#fff] shadow-xl rounded-[20px] h-[500px]">
                         <h2 className="text-3xl text-center mb-[20px] font-medium">
                             Log<span className="text-primary">in</span>
