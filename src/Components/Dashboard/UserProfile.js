@@ -1,3 +1,5 @@
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 
 const UserProfile = () => {
@@ -10,7 +12,8 @@ const UserProfile = () => {
                     isEditing ? <>
                         <div className="flex justify-between items-center w-[100%] mx-[40px]">
                             <div className="w-[50%] flex justify-center items-center flex-col">
-                                <img className="border-[2px] radius-full w-[150px] h-[150px] rounded-full hover:opacity-[0.3] transition-opacity" src="https://images.unsplash.com/photo-1481349518771-20055b2a7b24?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=939&q=80" alt="" />
+                                {/* <img src="https://images.unsplash.com/photo-1481349518771-20055b2a7b24?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=939&q=80" alt="" /> */}
+                                <FontAwesomeIcon icon={faUser} className="border-[2px] radius-full w-[150px] h-[150px] rounded-full hover:opacity-[0.3] transition-opacity" />
                                 <button className="mt-[20px] bg-[#ED4245] text-white text-[18px] py-[16px] px-[16px] rounded-md">Edit profile</button>
                             </div>
                             <div className="w-[50%] flex justify-center items-center flex-col">
@@ -25,7 +28,9 @@ const UserProfile = () => {
                     </> :
                         <div className="flex justify-between items-center w-[100%] mx-[40px]">
                             <div className="w-[50%] flex justify-center items-center flex-col">
-                                <img className="border-[2px] radius-full w-[150px] h-[150px] rounded-full hover:opacity-[0.3] transition-opacity" src="https://images.unsplash.com/photo-1481349518771-20055b2a7b24?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=939&q=80" alt="" />
+                                <div className="border-[2px] radius-full w-[150px] h-[150px] rounded-full hover:opacity-[0.3] transition-opacity flex justify-center items-center">
+                                    <FontAwesomeIcon icon={faUser} className="w-[80%] h-[80%]" />
+                                </div>
                                 <button className="mt-[20px] bg-[#ED4245] text-white text-[18px] py-[16px] px-[16px] rounded-md" onClick={() => setEditing(true)}>Edit profile</button>
                             </div>
                             <div className="w-[50%] flex justify-center items-center flex-col">

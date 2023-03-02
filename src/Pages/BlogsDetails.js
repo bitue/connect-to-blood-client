@@ -108,7 +108,7 @@ const BlogsDetails = () => {
             },
           })
         .then((res) => {
-          toast.success('Successfully made user Donor', {
+          toast.success('Successfully liked post', {
             position: "top-right",
             autoClose: 5000,
             hideProgressBar: false,
