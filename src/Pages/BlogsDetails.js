@@ -9,23 +9,32 @@ import {
 import axios from "axios";
 import Navbar from "../Components/Shared/Navbar";
 import { AuthContext } from "../context/AuthProvider";
-
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const BlogsDetails = () => {
   const { id } = useParams();
-  const { token } = useContext(AuthContext);
+  const { token, user } = useContext(AuthContext);
   const [blog, setBlog] = useState({});
   const [commentText, setCommentText] = useState("");
   const [showCommentForm, setShowCommentForm] = useState(false);
   const [showComments, setShowComments] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
 
-  useEffect(() => {
+  const fetchData = () => {
     axios
       .get(
         `https://pear-gifted-lamb.cyclic.app/public/getBlogByBlogId?id=${id}`
       )
-      .then((res) => setBlog(res.data.data))
+      .then((res) => {
+        setBlog(res.data.data)
+        console.log(res)
+      })
       .catch((error) => console.log(error));
+    console.log(blog)
+  }
+
+  useEffect(() => {
+    fetchData()
   }, []);
 
   const handleCommentChange = (e) => {
@@ -65,18 +74,58 @@ const BlogsDetails = () => {
 
   const handleComment = () => {
     setShowCommentForm(true);
-    setShowComments(true); // show comments when comment form is opened
+    setShowComments(true);
   };
 
   const handleCancelComment = () => {
     setShowCommentForm(false);
   };
 
-  const handleLike = () => {
-    setLikeCount(likeCount + 1);
+  const handleVote = () => {
+    console.log(blog)
+    if (blog?.likes?.includes(user._id) === true) {
+      toast.error('Your Already Liked this blog', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light'
+      });
+      fetchData();
+    } else {
+      axios
+        .post(`http://localhost:5000/vote`, {
+          blog_id: blog._id,
+          user_id: user._id,
+        },
+          {
+            headers: {
+              "Content-type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          })
+        .then((res) => {
+          toast.success('Successfully made user Donor', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          })
+          fetchData();
+        })
+        .catch((error) => console.log(error));
+    }
+
   };
 
-  const { title, author, user, createdAt, img, content, comments } = blog;
+  const { title, author, userEmail, createdAt, img, content, comments } = blog;
 
   return (
     <>
@@ -91,7 +140,7 @@ const BlogsDetails = () => {
           />
           <div className="flex justify-between items-center">
             <p className="text-sm text-secondary mr-[30px]">
-              {user?.email?.split("@")[0]}
+              {userEmail?.email?.split("@")[0]}
             </p>
             <p className="text-sm text-secondary">{createdAt?.split("T")[0]}</p>
           </div>
@@ -105,9 +154,9 @@ const BlogsDetails = () => {
           <p className="text-base leading-7">{content}</p>
         </div>
         <div className="flex items-center mt-4">
-          <button onClick={handleLike} className="mr-[10px]">
+          <button onClick={handleVote} className="mr-[10px]">
             <FontAwesomeIcon icon={faThumbsUp} className="h-4 w-4 mr-2" />
-            Like
+            {blog?.likes?.length}
           </button>
           <div className="flex items-center">
             <button onClick={handleComment} className="mr-[10px]">

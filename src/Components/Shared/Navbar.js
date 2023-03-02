@@ -23,14 +23,16 @@ const Navbar = () => {
       <li>
         <Link to="/about">About</Link>
       </li>
-      <li>
-        <Link to="/reviews">Reviews</Link>
-      </li>
+      
 
       {user ? <>
         <li>
+          <Link to="/bloodSearch">Blood Search</Link>
+        </li>
+        <li>
           <Link to="/dashboard">Dashboard</Link>
         </li>
+        
         <li>
           <Link to="/login" onClick={logOutHandler}>
             Logout
