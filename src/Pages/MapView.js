@@ -1,11 +1,14 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import axios from 'axios';
 import { AuthContext } from '../context/AuthProvider';
 
 import { useLocation } from 'react-router-dom';
+import Navbar from '../Components/Shared/Navbar';
 
 const MapView = () => {
     const [userLocation, setUserLocation] = useState(null);
@@ -36,9 +39,15 @@ const MapView = () => {
             });
         });
     }, []);
+    useEffect(() => {
+        if (userLocation) {
+            getDonorList();
+        }
+    }, [userLocation]);
 
     const getDonorList = async () => {
         console.log(userLocation, maxDistance);
+
         const data = await axios.post(
             `https://pear-gifted-lamb.cyclic.app/donorListMap`,
             {
@@ -59,45 +68,59 @@ const MapView = () => {
     };
 
     return (
-        <div className="">
-            <h1>
-                Map view {userLocation?.lat} {userLocation?.lng}
-            </h1>
-            <button onClick={getDonorList}>getDonor </button>
-            {userLocation && (
-                <div className="">
-                    <MapContainer
-                        center={userLocation}
-                        zoom={13}
-                        scrollWheelZoom={true}
-                        style={{ height: '100vh', width: '100vw' }}
-                    >
-                        <TileLayer url={tileLayerUrl} />
-                        <Marker position={userLocation}>
-                            <Popup>
-                                <p>Your current location </p>
-                            </Popup>
-                        </Marker>
-                        <TileLayer url={tileLayerUrl} />
-                        {donors.map((donor) => (
-                            <Marker
-                                position={[
-                                    donor.location.coordinates[1],
-                                    donor.location.coordinates[0]
-                                ]}
-                            >
-                                <Popup>
-                                    {/* donor card make korte hbe */}
+        <>
+            <Navbar />
+            <div className="">
+                <div className="flex justify-around items-center my-[30px] text-1xl">
+                    <h1>
+                        <span className="text-primary font-bold ">Your Location:</span> {userLocation?.lat} {userLocation?.lng}
+                    </h1>
+                    <h1 className=""><span className="text-primary font-bold">Donor Find : </span>{donors?.length}</h1>
+                </div>
+                <button className="flex justify-cen"></button>
 
-                                    <p> {donor.email}</p>
-                                    <p> {donor.phone}</p>
+                {userLocation && (
+                    <div className="h-[100%]">
+                        <MapContainer
+                            center={userLocation}
+                            zoom={13}
+                            scrollWheelZoom={true}
+                            style={{ height: '100vh', width: '100%' }}
+                        >
+                            <TileLayer url={tileLayerUrl} />
+                            <Marker position={userLocation}>
+                                <Popup>
+                                    <p>Your current location </p>
                                 </Popup>
                             </Marker>
-                        ))}
-                    </MapContainer>
-                </div>
-            )}
-        </div>
+                            <TileLayer url={tileLayerUrl} />
+                            {donors.map((donor) => (
+                                <Marker
+                                    position={[
+                                        donor.location.coordinates[1],
+                                        donor.location.coordinates[0]
+                                    ]}
+                                >
+                                    <Popup>
+                                        <div className="mt-4 ">
+                                            <p className="text-black ">Donor Details</p>
+                                            <p className="text-black ">
+                                                <FontAwesomeIcon icon={faEnvelope} className="mr-2" />
+                                                <a href={`mailto:${donor.email}`}>{donor.email}</a>
+                                            </p>
+                                            <p className="text-black ">
+                                                <FontAwesomeIcon icon={faPhone} className="mr-2" />
+                                                <a href={`tel:${donor.phone}`}>{donor.phone}</a>
+                                            </p>
+                                        </div>
+                                    </Popup>
+                                </Marker>
+                            ))}
+                        </MapContainer>
+                    </div>
+                )}
+            </div>
+        </>
     );
 };
 
