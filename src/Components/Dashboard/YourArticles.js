@@ -16,7 +16,8 @@ const YourArticles = () => {
                }
           }).then(data => setNews(data.data))
                .catch(error => console.log(error))
-     }, [])
+     }, [news])
+     // console.log(news)
 
      return (
           <div>
@@ -24,7 +25,7 @@ const YourArticles = () => {
                <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mx-[20px] gap-10 place-items-center">
                     {
                          news?.map(news =>
-                              <NewsCard data={news} />)
+                              <NewsCard news={news} />)
                     }
 
                </div>
