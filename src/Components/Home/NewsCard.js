@@ -4,10 +4,7 @@ import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
 const NewsCard = ({ news }) => {
-    // console.log(news)
-    const handleVote = () => {
-        console.log(news)
-    };
+    console.log(news)
     return (
         <div className="card card-compact rounded-b-md rounded-t-none w-96 bg-base-100 shadow-none h-[500px]">
             <figure>
@@ -18,7 +15,7 @@ const NewsCard = ({ news }) => {
                 <p>{news?.content}</p>
                 <div className="card-actions justify-between mt-[20px] items-center w-[95%] mx-auto">
                     <p>
-                        {news.user.email.split("@")[0]}
+                        {news?.user?.email.split("@")[0]}
                     </p>
                     <p className="text-right">{news?.createdAt.split('T')[0]}</p>
                 </div>

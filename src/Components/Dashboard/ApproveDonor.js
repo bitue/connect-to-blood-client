@@ -72,7 +72,7 @@ const ApproveDonor = () => {
         axios
             .delete(
                 `https://pear-gifted-lamb.cyclic.app/admin/removeDonorReq?id=${id}`,
-                {},
+
                 {
                     headers: {
                         'Content-Type': 'application/json',
