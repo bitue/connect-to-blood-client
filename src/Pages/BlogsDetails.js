@@ -89,7 +89,7 @@ const BlogsDetails = () => {
   };
 
   const { title, author, userEmail, createdAt, img, content, comments } = blog;
-
+  console.log(blog);
   return (
     <>
       <Navbar />
@@ -103,7 +103,7 @@ const BlogsDetails = () => {
           />
           <div className="flex justify-between items-center">
             <p className="text-sm text-secondary mr-[30px]">
-              {userEmail?.email?.split("@")[0]}
+              {blog?.user?.email?.split("@")[0]}
             </p>
             <p className="text-sm text-secondary">{createdAt?.split("T")[0]}</p>
           </div>
@@ -124,9 +124,8 @@ const BlogsDetails = () => {
           <div className="flex items-center">
             <button onClick={handleComment} className="mr-[10px]">
               <FontAwesomeIcon icon={faComment} className="h-4 w-4 mr-2" />
-              Comments
+              {comments?.length || 0} Comments
             </button>
-            <span>{comments?.length || 0} Comments</span>
           </div>
         </div>
         <div class="mt-4 bg-white rounded-md shadow-lg p-4">
@@ -168,7 +167,9 @@ const BlogsDetails = () => {
           {comments &&
             comments.map((comment) => (
               <div class="p-4 my-4 bg-gray-100 rounded-md" key={comment._id}>
-                <p class="text-gray-600 text-sm">{comment.comment}</p>
+                <div class="flex items-center mb-2">
+                  <p class="text-gray-600 text-sm">{comment.comment}</p>
+                </div>
               </div>
             ))}
         </div>
