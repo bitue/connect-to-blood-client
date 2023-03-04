@@ -19,13 +19,15 @@ const News = () => {
         loading ? <div className="flex justify-center items-center min-h-screen">
           <div className="loader"></div>
         </div> : <>
-          <h1 className="text-center my-[20px] text-5xl font-bold">
+          <h1 className="text-center mt-[40px] mb-[20px] text-5xl font-bold">
             Latest <span className="text-primary">Blog</span>
           </h1>
-          <div className=" w-[85%] mx-auto place-items-center py-4 grid lg:grid-cols-3 md:grid-cols-1 grid-cols-1 gap-4 mt-[20px]">
-            {
-              news?.map((news, index) => index < 3 && (<NewsCard news={news} />))
-            }
+          <div className="flex justify-center items-center">
+            <div className=" w-[85%] mx-auto place-items-center py-4 grid lg:grid-cols-3 md:grid-cols-1 grid-cols-1  mt-[20px]">
+              {
+                news?.map((news, index) => index < 3 && (<NewsCard news={news} />))
+              }
+            </div>
           </div>
         </>
       }
