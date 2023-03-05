@@ -1,34 +1,51 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
-import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 const NewsCard = ({ news }) => {
-    console.log(news)
-    return (
-        <div className="card card-compact rounded-b-md rounded-t-none w-96 bg-base-100 shadow-none h-[480px] mr-[18px] mt-[26px]">
-            <figure>
-                <img src={news?.img} alt="blood pressure images" className="h-[250px] object-cover   bg-center w-[100%]" />
-            </figure>
-            <div className="card-body">
-                <h3 className="card-title">{news?.title}</h3>
-                <p>{news?.content}</p>
-                <div className="card-actions justify-between mt-[20px] items-center w-[95%] mx-auto">
-                    <p>
-                        {news?.user?.email.split("@")[0]}
-                    </p>
-                    <p className="text-right">{news?.createdAt.split('T')[0]}</p>
-                </div>
+  return (
+    <div className="bg-white rounded-lg overflow-hidden shadow-md w-96">
+      <div className="h-48 overflow-hidden">
+        <img
+          src={news?.img}
+          alt="blood pressure images"
+          className="h-full w-full object-cover rounded-t-lg"
+        />
+      </div>
+      <div className="p-6">
+        <h3 className="text-lg font-bold mb-2">{news?.title}</h3>
+        <p
+          className="text-gray-700 text-base mb-4 truncate"
+          style={{ maxHeight: "6em" }}
+        >
+          {news?.content}
+        </p>
 
+        <div className="flex justify-between items-center text-gray-600 text-sm mt-4">
+          <div className="flex items-center">
+            <p className="text-gray-600 font-medium text-sm">
+              {news?.user?.email.split("@")[0]}
+            </p>
+          </div>
 
-                <Link to={`/blogs/${news?._id}`} className="w-[100%]">
-                    <button class="btn w-[100%] text-[#fff] gap-2 bg-primary border-primary hover:bg-[#222]">
-                        Read more
-                    </button>
-                </Link>
-            </div>
+          <p className="text-gray-400">
+            {new Date(news?.createdAt).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
+          </p>
         </div>
-    );
+      </div>
+      <div className="px-6 py-4 bg-gray-100 border-t border-gray-200 rounded-b-lg">
+        <Link
+          to={`/blogs/${news?._id}`}
+          className="inline-block bg-primary hover:bg-secondary text-white font-bold py-2 px-4 rounded"
+        >
+          Read more
+        </Link>
+      </div>
+    </div>
+  );
 };
 
 export default NewsCard;

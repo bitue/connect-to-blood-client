@@ -1,11 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowUp,
-  faComment,
-  faThumbsUp,
-} from "@fortawesome/free-solid-svg-icons";
+import { faArrowUp, faComment } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import Navbar from "../Components/Shared/Navbar";
 import { AuthContext } from "../context/AuthProvider";
@@ -159,8 +155,8 @@ const BlogsDetails = () => {
         </div>
         <div className="flex items-center mt-4">
           <button onClick={handleVote} className="mr-[10px]">
-            <FontAwesomeIcon icon={faThumbsUp} className="h-4 w-4 mr-2" />
-            {blog?.likes?.length}
+            <FontAwesomeIcon icon={faArrowUp} className="h-4 w-4 mr-2" />
+            {blog?.likes?.length} votes
           </button>
           <div className="flex items-center">
             <button onClick={handleComment} className="mr-[10px]">
@@ -208,7 +204,6 @@ const BlogsDetails = () => {
           {comments &&
             comments.map((comment) => (
               <div class="p-4 my-4 bg-gray-100 rounded-md " key={comment._id}>
-
                 <p class="text-gray-600 text-sm">{comment.comment}</p>
               </div>
             ))}
