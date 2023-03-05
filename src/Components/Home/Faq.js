@@ -1,5 +1,6 @@
 import React from "react";
-
+import Lottie from 'lottie-react';
+import animationDatas from "../../Lotties/104452-tech-support";
 const data = [
   {
     tabIndex: 0,
@@ -49,14 +50,19 @@ const Faq = () => {
       </div>
     );
   };
+
   return (
-    < div className="hero min-h-screen" >
+
+    <div className="hero pt-[30px] " >
       <div className="hero-content flex-col lg:flex-row">
-        <img src="https://imgdb.net/storage/uploads/9a65e48f88f6a85876c2e5a61da6f1c5983a7be54f1298db3d2fcd15059f8131.png" />
-        <div className="flex flex-col lg:flex-col lg:flex-wrap lg:justify-center place-content-center mx-auto p-4 ">
+        <div className="lg:w-[50%]" >
+          <Lottie animationData={animationDatas} loop={true} autoplay={true} />
+        </div>
+        <div className="lg:w-[60%]">
           <h1 className="text-4xl font-bold text-center my-5">
             Frequently Asked <span className="text-[#ED4245]"> Questions</span>
           </h1>
+
           {data.map((question) => (
             <Collapse
               key={question.tabIndex}
@@ -67,7 +73,7 @@ const Faq = () => {
           ))}
         </div>
       </div>
-    </ div >
+    </ div>
   );
 };
 

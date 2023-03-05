@@ -21,6 +21,7 @@ import MapView from './Pages/MapView';
 import RequireAuth from "./Components/Shared/RequireAuth";
 import RequireAdmin from "./Components/Shared/RequireAdmin";
 import { ToastContainer } from 'react-toastify';
+import UserProfileDetails from './Pages/UserProfileDetails';
 
 
 const App = () => {
@@ -44,7 +45,7 @@ const App = () => {
     },
     {
       path: "/registerDonor",
-      element: <RegisterDonar />,
+      element: <RequireAuth><RegisterDonar /></RequireAuth>,
     },
     {
       path: "/dashboard",
@@ -86,12 +87,16 @@ const App = () => {
     },
     {
       path: '/bloodSearch',
-      element: <BloodSearch />
+      element: <RequireAuth><BloodSearch /></RequireAuth>
     },
     {
       path: '/mapView',
-      element: <MapView />
+      element: <RequireAuth><MapView /></RequireAuth>
     },
+    {
+      path: "/userProfile/:userId",
+      element: <UserProfileDetails />
+    }
   ]);
 
 
