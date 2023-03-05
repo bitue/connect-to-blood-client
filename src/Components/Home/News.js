@@ -19,7 +19,7 @@ const News = () => {
         loading ? <div className="flex justify-center items-center min-h-screen">
           <div className="loader"></div>
         </div> : <>
-          <h1 className="text-center mt-[40px] mb-[20px] text-5xl font-bold">
+          <h1 className="text-center mt-[40px] mb-[-6px] text-5xl font-bold">
             Latest <span className="text-primary">Blog</span>
           </h1>
           <div className="flex justify-center items-center">

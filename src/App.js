@@ -91,7 +91,7 @@ const App = () => {
     },
     {
       path: '/mapView',
-      element: <MapView />
+      element: <RequireAuth><MapView /></RequireAuth>
     },
     {
       path: "/userProfile/:userId",
