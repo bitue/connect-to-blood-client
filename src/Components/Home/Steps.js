@@ -1,14 +1,14 @@
 import React from "react";
-import Lottie from "react-lottie";
+import Lottie from "lottie-react";
 import { Link } from "react-router-dom";
-import animationData from "../../Lotties/74661-checkboard-review-animation.json"
+import animationDatas from "../../Lotties/74661-checkboard-review-animation.json"
 
 
 const Steps = () => {
   const defaultOptions = {
     loop: true,
     autoplay: true,
-    animationData: animationData,
+    animationData: animationDatas,
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice"
     }
@@ -17,11 +17,11 @@ const Steps = () => {
   return (
     ///steps component
     <div className="hero pt-[30px] " >
-      <div className="hero-content flex-col lg:flex-row">
+      <div className="hero-content flex-col lg:flex-row justify-between">
         <div className="lg:w-[40%]" >
-          <Lottie options={defaultOptions} />
+          <Lottie animationData={animationDatas} loop={true} autoplay={true} />
         </div>
-        <div className="lg:w-[60%]">
+        <div className="lg:w-[55%]">
           <h1 className="text-5xl font-bold ">
             Important <span className="text-[#ED4245]"> Step</span>
           </h1>

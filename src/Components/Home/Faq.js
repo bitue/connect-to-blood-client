@@ -1,6 +1,6 @@
 import React from "react";
-import Lottie from 'react-lottie';
-import animationData from "../../Lotties/104452-tech-support";
+import Lottie from 'lottie-react';
+import animationDatas from "../../Lotties/104452-tech-support";
 const data = [
   {
     tabIndex: 0,
@@ -51,23 +51,13 @@ const Faq = () => {
     );
   };
 
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: animationData,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice"
-    }
-  };
-
   return (
 
     <div className="hero pt-[30px] " >
       <div className="hero-content flex-col lg:flex-row">
         <div className="lg:w-[50%]" >
-          <Lottie options={defaultOptions}  />
+          <Lottie animationData={animationDatas} loop={true} autoplay={true} />
         </div>
-        {/* <img src={"https://imgdb.net/storage/uploads/9a65e48f88f6a85876c2e5a61da6f1c5983a7be54f1298db3d2fcd15059f8131.png"} className="rounded-lg lg:md:w-[50%]" alt="hero" /> */}
         <div className="lg:w-[60%]">
           <h1 className="text-4xl font-bold text-center my-5">
             Frequently Asked <span className="text-[#ED4245]"> Questions</span>
