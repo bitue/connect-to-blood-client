@@ -8,6 +8,7 @@ import Stats from '../Components/Home/Stats';
 import Faq from '../Components/Home/Faq';
 import Reviews from '../Components/Home/Reviews';
 import Steps from "../Components/Home/Steps";
+import ContactUs from '../Components/Home/ContactUs';
 
 const Home = () => {
     // const value = useContext(AuthContext);
@@ -22,6 +23,7 @@ const Home = () => {
             {/* <Stats /> */}
             <Steps />
             <Faq />
+            <ContactUs />
         </div>
     );
 };

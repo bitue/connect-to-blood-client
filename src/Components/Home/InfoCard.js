@@ -1,8 +1,13 @@
-import React from 'react';
-
+import React, { useEffect } from 'react';
+import AOS from "aos"
+import 'aos/dist/aos.css';
 const InfoCard = (data) => {
+    useEffect(() => {
+        AOS.init();
+    }, [])
+    console.log(data)
     return (
-        <div className="card w-96 bg-base-100 shadow-lg mr-[20px] lg:md:mb-[0px] mb-[10px]">
+        <div className="card w-96 bg-base-100 shadow-md mr-[20px] lg:md:mb-[0px] mb-[10px]" data-aos={data.dataAos}>
             <figure className="pt-10">
                 <img
                     className="w-14"

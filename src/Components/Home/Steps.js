@@ -16,7 +16,7 @@ const Steps = () => {
 
   return (
     ///steps component
-    <div className="hero pt-[30px] " >
+    <div className="hero pt-[30px] " data-aos="fade-up">
       <div className="hero-content flex-col lg:flex-row justify-between">
         <div className="lg:w-[40%]" >
           <Lottie animationData={animationDatas} loop={true} autoplay={true} />

@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import img from "../../Assets/images/about.jpg"
+import AOS from "aos"
+import 'aos/dist/aos.css';
 
 const About = () => {
+    useEffect(() => {
+        AOS.init();
+    }, [])
     return (
         <>
-            <div className="hero">
+            <div className="hero" data-aos="fade-up">
                 <div className="hero-content flex-col lg:flex-row">
                     <img src={img} alt="" className="rounded-lg lg:md:w-[60%]" />
                     <div className="lg:md:w-[40%] lg:md:text-left text-center">

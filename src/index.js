@@ -5,6 +5,7 @@ import './index.css';
 import App from './App';
 import AuthProvider from './context/AuthProvider';
 
+import 'aos/dist/aos.css';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
