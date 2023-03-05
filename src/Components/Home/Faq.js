@@ -53,7 +53,7 @@ const Faq = () => {
 
   return (
 
-    <div className="hero pt-[30px] " >
+    <div className="hero pt-[30px] " data-aos="fade-up">
       <div className="hero-content flex-col lg:flex-row">
         <div className="lg:w-[50%]" >
           <Lottie animationData={animationDatas} loop={true} autoplay={true} />

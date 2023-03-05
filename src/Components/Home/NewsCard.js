@@ -6,9 +6,9 @@ import { Link } from 'react-router-dom';
 const NewsCard = ({ news }) => {
     console.log(news)
     return (
-        <div className="card card-compact rounded-b-md rounded-t-none w-96 bg-base-100 shadow-none h-[480px] mr-[18px] mt-[26px]">
+        <div className="card card-compact w-96 bg-base-100 shadow-md h-[480px] mr-[18px] mt-[26px] rounded-[1rem]">
             <figure>
-                <img src={news?.img} alt="blood pressure images" className="h-[250px] object-cover   bg-center w-[100%]" />
+                <img src={news?.img} alt="blood pressure images" className="h-[250px] object-cover bg-center w-[100%] " />
             </figure>
             <div className="card-body">
                 <h3 className="card-title">{news?.title}</h3>

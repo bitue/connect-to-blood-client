@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import img from "../../Assets/images/hero-image.png"
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay } from "swiper";
-
 import 'swiper/swiper-bundle.min.css'
 import 'swiper/swiper.min.css'
 import 'swiper/css/bundle'
@@ -16,7 +15,7 @@ const Hero = () => {
             disableOnInteraction: false
         }} loop={true}>
             <SwiperSlide>
-                <div className="hero pt-[30px] lg:mx-[10px]">
+                <div className="hero pt-[30px] lg:mx-[10px]" data-aos="fade-up">
                     <div className="hero-content flex-col lg:flex-row-reverse">
                         <img src={img} className="rounded-lg md:w-[60%]" alt="hero" />
                         <div className="lg:w-[40%]">
@@ -31,7 +30,7 @@ const Hero = () => {
             </SwiperSlide>
 
             <SwiperSlide>
-                <div className="hero pt-[30px] lg:mx-[10px]">
+                <div className="hero pt-[30px] lg:mx-[10px]" data-aos="fade-up">
                     <div className="hero-content flex-col lg:flex-row-reverse">
                         <img src={img} className="rounded-lg md:w-[60%]" alt="hero" />
                         <div className="lg:w-[40%]">

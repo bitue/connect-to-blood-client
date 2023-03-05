@@ -14,7 +14,7 @@ const News = () => {
   }, [])
 
   return (
-    <>
+    <div data-aos="fade-up">
       {
         loading ? <div className="flex justify-center items-center min-h-screen">
           <div className="loader"></div>
@@ -31,7 +31,7 @@ const News = () => {
           </div>
         </>
       }
-    </>
+    </div>
   );
 };
 
