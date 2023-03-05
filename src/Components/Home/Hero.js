@@ -7,7 +7,7 @@ import 'swiper/swiper.min.css'
 import 'swiper/css/bundle'
 
 const Hero = () => {
-    SwiperCore.use([Autoplay]);
+  SwiperCore.use([Autoplay]);
 
     return (
         <Swiper spaceBetween={50} slidesPerView={1} onSlideChange={() => console.log("Slide CHange")} onSwiper={(swiper) => console.log(swiper)} autoplay={{

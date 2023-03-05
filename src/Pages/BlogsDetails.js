@@ -1,16 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowUp,
-  faComment,
-  faThumbsUp,
-} from "@fortawesome/free-solid-svg-icons";
+import { faArrowUp, faComment } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import Navbar from "../Components/Shared/Navbar";
 import { AuthContext } from "../context/AuthProvider";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const BlogsDetails = () => {
   const { id } = useParams();
   const { token, user } = useContext(AuthContext);
@@ -26,15 +22,15 @@ const BlogsDetails = () => {
         `https://pear-gifted-lamb.cyclic.app/public/getBlogByBlogId?id=${id}`
       )
       .then((res) => {
-        setBlog(res.data.data)
-        console.log(res)
+        setBlog(res.data.data);
+        console.log(res);
       })
       .catch((error) => console.log(error));
-    console.log(blog)
-  }
+    console.log(blog);
+  };
 
   useEffect(() => {
-    fetchData()
+    fetchData();
   }, []);
 
   const handleCommentChange = (e) => {
@@ -73,6 +69,7 @@ const BlogsDetails = () => {
   };
 
   const handleComment = () => {
+    //comment
     setShowCommentForm(true);
     setShowComments(true);
   };
@@ -82,9 +79,9 @@ const BlogsDetails = () => {
   };
 
   const handleVote = () => {
-    console.log(blog)
+    console.log(blog);
     if (blog?.likes?.includes(user._id) === true) {
-      toast.error('Your Already Liked this blog', {
+      toast.error("Your Already Liked this blog", {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -92,23 +89,26 @@ const BlogsDetails = () => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: 'light'
+        theme: "light",
       });
       fetchData();
     } else {
       axios
-        .post(`https://pear-gifted-lamb.cyclic.app/vote`, {
-          blog_id: blog._id,
-          user_id: user._id,
-        },
+        .post(
+          `https://pear-gifted-lamb.cyclic.app/vote`,
+          {
+            blog_id: blog._id,
+            user_id: user._id,
+          },
           {
             headers: {
               "Content-type": "application/json",
               Authorization: `Bearer ${token}`,
             },
-          })
+          }
+        )
         .then((res) => {
-          toast.success('Successfully liked post', {
+          toast.success("Successfully liked post", {
             position: "top-right",
             autoClose: 5000,
             hideProgressBar: false,
@@ -117,16 +117,15 @@ const BlogsDetails = () => {
             draggable: true,
             progress: undefined,
             theme: "light",
-          })
+          });
           fetchData();
         })
         .catch((error) => console.log(error));
     }
-
   };
 
   const { title, author, userEmail, createdAt, img, content, comments } = blog;
-  console.log(comments)
+  console.log(comments);
 
   return (
     <>
@@ -156,15 +155,14 @@ const BlogsDetails = () => {
         </div>
         <div className="flex items-center mt-4">
           <button onClick={handleVote} className="mr-[10px]">
-            <FontAwesomeIcon icon={faThumbsUp} className="h-4 w-4 mr-2" />
-            {blog?.likes?.length}
+            <FontAwesomeIcon icon={faArrowUp} className="h-4 w-4 mr-2" />
+            {blog?.likes?.length} votes
           </button>
           <div className="flex items-center">
             <button onClick={handleComment} className="mr-[10px]">
               <FontAwesomeIcon icon={faComment} className="h-4 w-4 mr-2" />
-              Comments
+              {comments?.length || 0} Comments
             </button>
-            <span>{comments?.length || 0} Comments</span>
           </div>
         </div>
         <div class="mt-4 bg-white rounded-md shadow-lg p-4">
@@ -203,11 +201,9 @@ const BlogsDetails = () => {
             </form>
           )}
 
-          {
-            comments &&
+          {comments &&
             comments.map((comment) => (
               <div class="p-4 my-4 bg-gray-100 rounded-md " key={comment._id}>
-
                 <p class="text-gray-600 text-sm">{comment.comment}</p>
               </div>
             ))}
