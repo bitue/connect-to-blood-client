@@ -208,7 +208,7 @@ const BlogsDetails = () => {
           {comments &&
             comments.map((comment) => (
               <div class="p-4 my-4 bg-gray-100 rounded-md " key={comment._id}>
-                
+
                 <p class="text-gray-600 text-sm">{comment.comment}</p>
               </div>
             ))}

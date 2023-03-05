@@ -80,7 +80,7 @@ const BanUsers = () => {
 
     return (
         <div>
-            <h2 className="text-center text-3xl my-[20px]">Create an Admin</h2>
+            <h2 className="text-center text-3xl my-[20px]">Ban user</h2>
             <div class="overflow-x-auto px-[10px]">
                 <table class="table w-full">
                     <thead className="bg-[#fff]">

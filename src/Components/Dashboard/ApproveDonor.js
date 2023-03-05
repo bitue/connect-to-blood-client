@@ -139,22 +139,40 @@ const ApproveDonor = () => {
                     <label htmlFor={`my-modal-${index}`}>Learn more</label>
                   </button>
                 </td>
-                <td>
-                  <button
-                    onClick={() => handleApprove(donorRq?._id)}
-                    className="btn no-animation gap-2 bg-green-500 mr-[14px] hover:bg-primary hover:border-primary text-white"
-                  >
-                    Approve
-                  </button>
-                </td>
-                <td>
-                  <button
-                    onClick={() => handleDeny(donorRq?._id)}
-                    className="btn no-animation gap-2 bg-primary hover:bg-primary hover:border-primary  text-white"
-                  >
-                    Deny
-                  </button>
-                </td>
+                {donorRq?.user?.role === "donor" ||
+                donorRq?.user?.role === "admin" ? (
+                  <>
+                    <td>
+                      <button className="btn no-animation gap-2 bg-green-500 mr-[14px] hover:bg-green-500 border-green-500 text-white opacity-[0.3]">
+                        Approve
+                      </button>
+                    </td>
+                    <td>
+                      <button className="btn no-animation gap-2 bg-primary hover:bg-primary border-primary hover:border-none   text-white opacity-[0.3] ">
+                        Deny
+                      </button>
+                    </td>
+                  </>
+                ) : (
+                  <>
+                    <td>
+                      <button
+                        onClick={() => handleApprove(donorRq?._id)}
+                        className="btn no-animation gap-2 bg-green-500 mr-[14px] hover:bg-primary hover:border-primary text-white"
+                      >
+                        Approve
+                      </button>
+                    </td>
+                    <td>
+                      <button
+                        onClick={() => handleDeny(donorRq?._id)}
+                        className="btn no-animation gap-2 bg-primary hover:bg-primary hover:border-primary  text-white"
+                      >
+                        Deny
+                      </button>
+                    </td>
+                  </>
+                )}
 
                 <input
                   type="checkbox"
