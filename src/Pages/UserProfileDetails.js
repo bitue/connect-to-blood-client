@@ -10,7 +10,7 @@ const UserProfileDetails = () => {
         _id: "63fc7ee3f50a0cd272d23c94",
         email: "kk@kk.com",
         phoneNumber: "adkfmkdsfkds",
-        role: "donor",
+        role: "user",
         bloodType: "A+"
     });
     const fectchUser = () => {
@@ -57,8 +57,6 @@ const UserProfileDetails = () => {
                                         <p className="opacity-[0.5] font-bold">Blood Type</p>
                                         <p className="mb-[30px]">{user?.bloodType}</p>
                                     </div>
-
-
                                 </div> :
                                 <div>
                                     <div className="flex justify-between w-[80%] mt-[30px]">

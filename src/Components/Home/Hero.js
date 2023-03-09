@@ -17,7 +17,7 @@ const Hero = () => {
             <SwiperSlide>
                 <div className="hero pt-[30px] lg:mx-[10px]" data-aos="fade-up">
                     <div className="hero-content flex-col lg:flex-row-reverse">
-                        <img src={img} className="rounded-lg md:w-[60%]" alt="hero" />
+                        <img src={"https://i.ibb.co/qRy7C8t/2707649-removebg-preview.png"} className="rounded-lg md:w-[60%]" alt="hero" />
                         <div className="lg:w-[40%]">
                             <h1 className="text-5xl font-bold lg:md:text-left text-center">Be a <span className="text-primary">Hero</span>, Donate Blood!</h1>
                             <p className="py-6 text-1xl font-normal text-[#555] lg:md:text-left text-center">Connect to Blood connects donors with local hospitals. Give the gift of life and help save lives in your community. Join us today.</p>

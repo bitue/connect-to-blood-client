@@ -12,7 +12,7 @@ const Steps = () => {
         <div className="lg:w-[40%]" >
           <Lottie animationData={stepsAnimation} loop={true} autoplay={true} />
         </div>
-        <div className="lg:w-[55%]">
+        <div className="lg:w-[50%]">
           <h1 className="text-5xl font-bold ">
             Important <span className="text-[#ED4245]"> Step</span>
           </h1>

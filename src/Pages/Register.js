@@ -52,6 +52,7 @@ const Register = () => {
                 setErr(error);
             }
         );
+
     };
     useEffect(() => {
         handleLocationClick();
