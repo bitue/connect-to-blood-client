@@ -12,7 +12,7 @@ const BlogsDetails = () => {
   const { token, user } = useContext(AuthContext);
   const [blog, setBlog] = useState({});
   const [commentText, setCommentText] = useState("");
-  const [showCommentForm, setShowCommentForm] = useState(false);
+  const [showCommentForm, setShowCommentForm] = useState(true);
   const [showComments, setShowComments] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
 
@@ -46,6 +46,7 @@ const BlogsDetails = () => {
           {
             blog: blog._id,
             comment: commentText,
+            fullName: user.email
           },
           {
             headers: {
@@ -64,7 +65,7 @@ const BlogsDetails = () => {
         })
         .catch((error) => console.log(error));
       setCommentText("");
-      setShowCommentForm(false);
+      setShowCommentForm(true);
     }
   };
 

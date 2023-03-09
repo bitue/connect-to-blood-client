@@ -5,7 +5,7 @@ import 'aos/dist/aos.css';
 
 const About = () => {
     useEffect(() => {
-        AOS.init();
+    AOS.init();
     }, [])
     return (
         <>
@@ -14,7 +14,7 @@ const About = () => {
                     <img src={img} alt="" className="rounded-lg lg:md:w-[60%]" />
                     <div className="lg:md:w-[40%] lg:md:text-left text-center">
                         <h1 className="text-5xl font-bold">About US</h1>
-                        <p className="py-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor debitis aliquam incidunt nam? Impedit delectus provident dolorem dolor. Cupiditate inventore doloremque minus maiores ullam, harum voluptate voluptas saepe, quae a nisi reiciendis odit aspernatur! Facere commodi praesentium doloribus, eveniet esse soluta eius velit odio quos pariatur veniam minus. Minima, vitae!</p>
+                        <p className="py-6">At Connect To Blood, we're committed to saving lives through the power of blood donation. Our mission is to provide a safe, reliable, and convenient way for donors to give blood and for patients to receive the life-saving transfusions they need. With a dedicated team of staff and volunteers, as well as partnerships with leading organizations in the healthcare industry, we're working to create a world where every patient has access to the blood products they need.</p>
                     </div>
                 </div>
             </div>
