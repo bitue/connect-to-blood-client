@@ -1,13 +1,13 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faPhone, faUser } from '@fortawesome/free-solid-svg-icons';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import axios from 'axios';
 import { AuthContext } from '../context/AuthProvider';
 
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Navbar from '../Components/Shared/Navbar';
 
 const MapView = () => {
@@ -111,6 +111,10 @@ const MapView = () => {
                                             <p className="text-black ">
                                                 <FontAwesomeIcon icon={faPhone} className="mr-2" />
                                                 <a href={`tel:${donor.phone}`}>{donor.phone}</a>
+                                            </p>
+                                            <p className="text-black ">
+                                                <FontAwesomeIcon icon={faUser} className="mr-2" />
+                                                <Link to={`/userProfile/${donor._id}`}>Learn More</Link>
                                             </p>
                                         </div>
                                     </Popup>

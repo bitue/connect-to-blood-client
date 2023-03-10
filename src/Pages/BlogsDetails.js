@@ -205,6 +205,7 @@ const BlogsDetails = () => {
           {comments &&
             comments.map((comment) => (
               <div class="p-4 my-4 bg-gray-100 rounded-md " key={comment._id}>
+                <p className="text-secondary text-sm font-bold mb-[5px]">{comment?.fullName?.split("@")[0]}</p>
                 <p class="text-gray-600 text-sm">{comment.comment}</p>
               </div>
             ))}

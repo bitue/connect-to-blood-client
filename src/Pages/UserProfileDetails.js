@@ -1,21 +1,28 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Navbar from '../Components/Shared/Navbar';
+import { AuthContext } from '../context/AuthProvider';
 
 const UserProfileDetails = () => {
     const { userId } = useParams()
     const [tab, setTab] = useState(1);
-    const [user, setUser] = useState({
-        _id: "63fc7ee3f50a0cd272d23c94",
-        email: "kk@kk.com",
-        phoneNumber: "adkfmkdsfkds",
-        role: "user",
-        bloodType: "A+"
-    });
-    const fectchUser = () => {
-
+    const [user, setUser] = useState();
+    const { token } = useContext(AuthContext)
+    const fetchUser = () => {
+        axios.get(`https://pear-gifted-lamb.cyclic.app/getDonorById?id=${userId}`, {
+            headers: {
+                "Content-Type": "application/json",
+                authorization: `Bearer ${token}`
+            }
+        }).then(res => setUser(res.data))
+            .catch(err => console.log(err))
     }
+    useEffect(() => {
+        fetchUser()
+    }, [])
+    console.log(user)
+
     return (
         <div>
             <Navbar />
@@ -49,7 +56,7 @@ const UserProfileDetails = () => {
                                     </div>
                                     <div>
                                         <p className="opacity-[0.5] font-bold">Phone Number</p>
-                                        <p className="mb-[30px]">{user?.phoneNumber}</p>
+                                        <p className="mb-[30px]">{user?.phone}</p>
                                         <p className="opacity-[0.5] font-bold">Location</p>
                                         <p>Bangladesh, Dhaka, Utora</p>
                                     </div>
@@ -62,35 +69,30 @@ const UserProfileDetails = () => {
                                     <div className="flex justify-between w-[80%] mt-[30px]">
                                         <div>
                                             <p className="opacity-[0.5] font-bold">Height</p>
-                                            <p className="mb-[30px]">5.8</p>
+                                            <p className="mb-[30px]">{user?.donorHealth?.height}</p>
                                             <p className="opacity-[0.5] font-bold">Weight</p>
-                                            <p>60 kg</p>
+                                            <p>{user?.donorHealth?.weight} KG</p>
                                         </div>
                                         <div>
                                             <p className="opacity-[0.5] font-bold">Phone Number</p>
-                                            <p className="mb-[30px]">+880 123 456 78</p>
+                                            <p className="mb-[30px]">{user?.phone}</p>
                                             <p className="opacity-[0.5] font-bold">Hypertension</p>
-                                            <p>Yes</p>
+                                            <p>{user.donorHealth?.hypertension}</p>
                                         </div>
                                         <div>
                                             <p className="opacity-[0.5] font-bold">Smoke</p>
-                                            <p className="mb-[30px]">No</p>
+                                            <p className="mb-[30px]">{user?.donorHealth?.smoke}</p>
                                             <p className="opacity-[0.5] font-bold">Last Blood Donation</p>
-                                            <p>{new Date("2023-03-16T00:00:00.000+00:00").toLocaleDateString("en-US", {
+                                            <p>{new Date(user?.donorHealth?.lastBloodDonation).toLocaleDateString("en-US", {
                                                 year: "numeric",
                                                 month: "long",
                                                 day: "numeric",
                                             })}</p>
                                         </div>
                                         <div>
-                                            <p className="opacity-[0.5] font-bold">Last Blood Donation</p>
-                                            <p className="mb-[30px]">{new Date("2023-03-16T00:00:00.000+00:00").toLocaleDateString("en-US", {
-                                                year: "numeric",
-                                                month: "long",
-                                                day: "numeric",
-                                            })}</p>
+                                           
                                             <p className="opacity-[0.5] font-bold">Date of Birth</p>
-                                            <p className="mb-[30px]">{new Date("2023-03-16T00:00:00.000+00:00").toLocaleDateString("en-US", {
+                                            <p className="mb-[30px]">{new Date(user?.donorHealth?.dateOfBirth).toLocaleDateString("en-US", {
                                                 year: "numeric",
                                                 month: "long",
                                                 day: "numeric",
