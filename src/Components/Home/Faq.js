@@ -1,6 +1,6 @@
 import React from "react";
 import Lottie from 'lottie-react';
-import animationDatas from "../../Lotties/104452-tech-support";
+import animationDatas from "../../Assets/images/FAQ-img.png";
 const data = [
   {
     tabIndex: 0,
@@ -56,7 +56,7 @@ const Faq = () => {
     <div className="hero pt-[30px] " data-aos="fade-up">
       <div className="hero-content flex-col lg:flex-row">
         <div className="lg:w-[50%]" >
-          <Lottie animationData={animationDatas} loop={true} autoplay={true} />
+          <img src={animationDatas} alt=""/>
         </div>
         <div className="lg:w-[60%]">
           <h1 className="text-4xl font-bold text-center my-5">
