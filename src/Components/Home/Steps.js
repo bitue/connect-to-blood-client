@@ -40,8 +40,7 @@ const Steps = () => {
               <div
                 data-te-stepper-content-ref
                 class="ps-1 transition-[height, margin-bottom, padding-top, padding-bottom] left-0 overflow-hidden pr-6 pb-4 pl-[3.75rem] duration-300 ease-in-out">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                To access all the benefits of our blood donation website, including scheduling donations and tracking your history, register now to login and start making a difference!
               </div>
             </li>
             <li
@@ -64,8 +63,7 @@ const Steps = () => {
               <div
                 data-te-stepper-content-ref
                 class="ps-1 transition-[height, margin-bottom, padding-top, padding-bottom] left-0 overflow-hidden pr-6 pb-4 pl-[3.75rem] duration-300 ease-in-out">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Join the life-saving community today and become a blood donor! Your donation could make all the difference for someone in need.
               </div>
             </li>
             <li
@@ -88,8 +86,7 @@ const Steps = () => {
               <div
                 data-te-stepper-content-ref
                 class="ps-1 transition-[height, margin-bottom, padding-top, padding-bottom] left-0 overflow-hidden pr-6 pb-4 pl-[3.75rem] duration-300 ease-in-out">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Urgent need for blood? Our search tool can help you find the blood type you need quickly and easily. Start searching now and get the help you need.
               </div>
             </li>
             <li

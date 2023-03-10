@@ -1,5 +1,4 @@
 import React from "react";
-import Lottie from 'lottie-react';
 import animationDatas from "../../Assets/images/FAQ-img.png";
 const data = [
   {
